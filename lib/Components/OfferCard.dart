@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:feelsgood/bloc/Offer.dart';
+import 'package:feelsgood/Styling/Constants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class OfferCard extends StatelessWidget {
-  Offer offer;
+  final Offer offer;
 
   OfferCard({this.offer});
 
@@ -13,8 +15,16 @@ class OfferCard extends StatelessWidget {
       children: <Widget>[
         Container(
           width: 140,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: kBorderColor,
+                blurRadius: 1,
+              ),
+            ],
+          ),
           child: Card(
-            color: Color(0xFFACB6B9),
+            color: kCardColor,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -24,8 +34,8 @@ class OfferCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 8, right: 8, left: 8, bottom: 5),
-                      child: Image(
-                        image: NetworkImage(offer.image),
+                      child: CachedNetworkImage(
+                        imageUrl: offer.image,
                         height: 60,
                         width: 60,
                       ),
@@ -53,6 +63,7 @@ class OfferCard extends StatelessWidget {
                         child: Text(
                           "\$${offer.oldPrice}/-",
                           style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
                             color: Colors.black,
                             fontWeight: FontWeight.w700,
                             fontSize: 15,

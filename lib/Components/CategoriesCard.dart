@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:feelsgood/bloc/Category.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CategoriesCard extends StatelessWidget {
   Category category;
@@ -23,17 +25,18 @@ class CategoriesCard extends StatelessWidget {
                 child: Image(
                   height: 40,
                   width: 40,
-                  image: AssetImage(
-                    category.image,
-                  ),
+                  image: AssetImage(category.image),
                 ),
               ),
             ),
-            Text(category.category),
+            Text(
+              category.category,
+              style: TextStyle(fontWeight: FontWeight.w500),
+            ),
           ],
         ),
         SizedBox(
-          width: 18,
+          width: 10,
         ),
       ],
     );

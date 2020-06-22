@@ -4,15 +4,20 @@ import 'package:feelsgood/bloc/Offer.dart';
 class OfferBloc {
   List<Offer> _offerList = [
     Offer(
-        "Apple",
-        "https://img2.exportersindia.com/product_images/bc-full/2019/12/3457075/fresh-apple-1576236928-5206404.jpeg",
+        "Grapes",
+        "https://5.imimg.com/data5/RK/KV/XE/SELLER-100337308/black-sharad-seedless-grapes-500x500.jpg",
         "2",
         "7"),
     Offer(
-        "Apple",
-        "https://img2.exportersindia.com/product_images/bc-full/2019/12/3457075/fresh-apple-1576236928-5206404.jpeg",
-        "2",
+        "Harpic",
+        "https://images-na.ssl-images-amazon.com/images/I/61DcrT78DOL._SL1000_.jpg",
+        "4",
         "7"),
+    Offer(
+        "Munch",
+        "https://lh3.googleusercontent.com/proxy/7hQb4_sqmw21-9F4iiB8hNz0vh2reUncieaWVey4RGObwB7p3SbppywiQAsYlK0yIN44w-VpmIQMUtBaq4wDzuOh1rN80H8cXrieZC0nolR9TcHBQiDYxAQZaQ",
+        "1",
+        "1.5"),
   ];
 
   final _offerListStreamContoller = StreamController<List<Offer>>();

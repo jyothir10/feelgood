@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:feelsgood/bloc/Item.dart';
+import 'package:feelsgood/Styling/Constants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ItemsCard extends StatelessWidget {
   Item item;
@@ -10,16 +12,25 @@ class ItemsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 144,
+      height: 103,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: kBorderColor,
+            blurRadius: 1,
+          ),
+        ],
+      ),
       child: Card(
-        color: Color(0xFFACB6B9),
+        color: kCardColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Padding(
               padding:
                   const EdgeInsets.only(top: 8, right: 8, left: 8, bottom: 5),
-              child: Image(
-                image: NetworkImage(item.image),
+              child: CachedNetworkImage(
+                imageUrl: item.image,
                 height: 60,
                 width: 60,
               ),
@@ -60,7 +71,7 @@ class ItemsCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 25,
+                height: 28,
                 child: FlatButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
