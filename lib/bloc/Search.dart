@@ -1,4 +1,4 @@
-class Search{
+class Search {
   String _image;
   String _name;
   String _price;
