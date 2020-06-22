@@ -29,9 +29,12 @@ class CategoriesCard extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
-              category.category,
-              style: TextStyle(fontWeight: FontWeight.w500),
+            Padding(
+              padding: const EdgeInsets.only(left: 5),
+              child: Text(
+                category.category,
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
             ),
           ],
         ),
