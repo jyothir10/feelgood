@@ -9,6 +9,10 @@ import 'package:feelsgood/Components/OfferCard.dart';
 import 'package:feelsgood/Components/Separator.dart';
 import 'package:feelsgood/bloc/Category.dart';
 import 'package:feelsgood/bloc/Categorybloc.dart';
+import 'package:feelsgood/bloc/Item.dart';
+import 'package:feelsgood/bloc/Itembloc.dart';
+import 'package:feelsgood/bloc/Offer.dart';
+import 'package:feelsgood/bloc/Offerbloc.dart';
 
 class SupermarketScreen extends StatefulWidget {
   static const String id = '/supermarket';
@@ -19,6 +23,8 @@ class SupermarketScreen extends StatefulWidget {
 
 class _SupermarketScreenState extends State<SupermarketScreen> {
   final CategoryBloc _categoryBloc = CategoryBloc();
+  final ItemBloc _itemBloc = ItemBloc();
+  final OfferBloc _offerBloc = OfferBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -199,8 +205,11 @@ class _SupermarketScreenState extends State<SupermarketScreen> {
                 ),
               ],
             ),
-            Separator(
-              text: "Categories",
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Separator(
+                text: "Categories",
+              ),
             ),
             Container(
               height: 100,
@@ -227,13 +236,36 @@ class _SupermarketScreenState extends State<SupermarketScreen> {
                 },
               ),
             ),
-            Separator(text: "Fresh new items"),
-            ItemsCard(
-              image:
-                  "https://img2.exportersindia.com/product_images/bc-full/2019/12/3457075/fresh-apple-1576236928-5206404.jpeg",
-              name: "Apple",
-              price: "2",
+            Separator(text: "Fresh New Items"),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Container(
+                height: 160,
+                child: StreamBuilder<List<Item>>(
+                  stream: _itemBloc.itemListStream,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<Item>> snapshot) {
+                    if (snapshot.hasError) {
+                      print(snapshot.error);
+                    }
+                    return snapshot.hasData
+                        ? ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (context, index) {
+                              return ItemsCard(
+                                item: snapshot.data[index],
+                              );
+                            })
+                        : Center(
+                            child: CircularProgressIndicator(),
+                          );
+                  },
+                ),
+              ),
             ),
+            Separator(text: "Most Recent Search"),
             Padding(
               padding: const EdgeInsets.only(top: 12),
               child: Container(
@@ -248,12 +280,30 @@ class _SupermarketScreenState extends State<SupermarketScreen> {
             Separator(
               text: "Our Offers",
             ),
-            OfferCard(
-              image:
-                  "https://img2.exportersindia.com/product_images/bc-full/2019/12/3457075/fresh-apple-1576236928-5206404.jpeg",
-              name: "Apple",
-              price: "2",
-              oldPrice: "7",
+            Container(
+              height: 180,
+              child: StreamBuilder<List<Offer>>(
+                stream: _offerBloc.itemListStream,
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<Offer>> snapshot) {
+                  if (snapshot.hasError) {
+                    print(snapshot.error);
+                  }
+                  return snapshot.hasData
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (context, index) {
+                            return OfferCard(
+                              offer: snapshot.data[index],
+                            );
+                          })
+                      : Center(
+                          child: CircularProgressIndicator(),
+                        );
+                },
+              ),
             ),
           ],
         ),

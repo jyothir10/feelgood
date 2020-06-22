@@ -1,9 +1,9 @@
-class Item {
+class Search{
   String _image;
   String _name;
   String _price;
 
-  Item(this._name, this._image, this._price);
+  Search(this._name, this._image, this._price);
 
   set image(String image) {
     this._image = image;

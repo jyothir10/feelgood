@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:feelsgood/bloc/Item.dart';
 
 class ItemsCard extends StatelessWidget {
-  final String image;
-  final String name;
-  final String price;
+  Item item;
 
-  ItemsCard({this.image, this.price, this.name});
+  ItemsCard({this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class ItemsCard extends StatelessWidget {
               padding:
                   const EdgeInsets.only(top: 8, right: 8, left: 8, bottom: 5),
               child: Image(
-                image: NetworkImage(image),
+                image: NetworkImage(item.image),
                 height: 60,
                 width: 60,
               ),
@@ -35,7 +34,7 @@ class ItemsCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Text(
-                        name,
+                        item.name,
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
@@ -46,7 +45,7 @@ class ItemsCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Text(
-                        "\$$price",
+                        "\$${item.price}",
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,

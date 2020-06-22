@@ -17,7 +17,7 @@ class CategoriesCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Card(
-              color: Color(0xFF58AF4A),
+              color: Color(category.color),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Image(

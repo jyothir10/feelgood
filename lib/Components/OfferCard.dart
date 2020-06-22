@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:feelsgood/bloc/Offer.dart';
 
 class OfferCard extends StatelessWidget {
-  final String image;
-  final String name;
-  final String price;
-  final String oldPrice;
+  Offer offer;
 
-  OfferCard({this.image, this.price, this.name, this.oldPrice});
+  OfferCard({this.offer});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class OfferCard extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           top: 8, right: 8, left: 8, bottom: 5),
                       child: Image(
-                        image: NetworkImage(image),
+                        image: NetworkImage(offer.image),
                         height: 60,
                         width: 60,
                       ),
@@ -35,7 +33,7 @@ class OfferCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Text(
-                        name,
+                        offer.name,
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
@@ -53,7 +51,7 @@ class OfferCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Text(
-                          "\$$oldPrice/-",
+                          "\$${offer.oldPrice}/-",
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w700,
@@ -64,7 +62,7 @@ class OfferCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 10, left: 5),
                         child: Text(
-                          "\$$price/-",
+                          "\$${offer.price}/-",
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w700,
