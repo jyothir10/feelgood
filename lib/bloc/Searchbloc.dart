@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:feelsgood/bloc/Search.dart';
+import 'package:feelsgood/Models/Search.dart';
 
 class SearchBloc {
   List<Search> _searchList = [

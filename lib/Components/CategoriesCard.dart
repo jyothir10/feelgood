@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:feelsgood/bloc/Category.dart';
+import 'package:feelsgood/Models/Category.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class CategoriesCard extends StatelessWidget {

@@ -7,14 +7,14 @@ import 'package:feelsgood/Components/CategoriesCard.dart';
 import 'package:feelsgood/Components/ItemsCard.dart';
 import 'package:feelsgood/Components/OfferCard.dart';
 import 'package:feelsgood/Components/Separator.dart';
-import 'package:feelsgood/bloc/Category.dart';
+import 'package:feelsgood/Models/Category.dart';
 import 'package:feelsgood/bloc/Categorybloc.dart';
-import 'package:feelsgood/bloc/Item.dart';
+import 'package:feelsgood/Models/Item.dart';
 import 'package:feelsgood/bloc/Itembloc.dart';
-import 'package:feelsgood/bloc/Offer.dart';
+import 'package:feelsgood/Models/Offer.dart';
 import 'package:feelsgood/bloc/Offerbloc.dart';
 import 'package:feelsgood/Styling/Constants.dart';
-import 'package:feelsgood/bloc/Search.dart';
+import 'package:feelsgood/Models/Search.dart';
 import 'package:feelsgood/bloc/Searchbloc.dart';
 import 'package:feelsgood/Components/SearchCard.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:feelsgood/bloc/Search.dart';
+import 'package:feelsgood/Models/Search.dart';
 import 'package:feelsgood/Styling/Constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 

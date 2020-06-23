@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:feelsgood/bloc/Item.dart';
+import 'package:feelsgood/Models/Item.dart';
 
 class ItemBloc {
   List<Item> _itemList = [
