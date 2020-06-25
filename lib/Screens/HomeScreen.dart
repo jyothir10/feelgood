@@ -122,16 +122,13 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class TopMarketCard extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       child: Card(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-              vertical: 22, horizontal: 15),
+          padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 15),
           child: Row(
             children: <Widget>[
               ClipRRect(
@@ -152,8 +149,8 @@ class TopMarketCard extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       "PANDA Supermarket",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700, fontSize: 16),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                     ),
                     Text(
                       "Old Bus stand",
