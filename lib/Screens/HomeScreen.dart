@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feelsgood/Styling/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -97,7 +98,105 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, top: 5),
+                  child: Text(
+                    "Top Markets",
+                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              height: 143,
+              color: Colors.grey,
+              child: TopMarketCard(),
+            ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class TopMarketCard extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:
+          const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+              vertical: 22, horizontal: 15),
+          child: Row(
+            children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: CachedNetworkImage(
+                  fit: BoxFit.fill,
+                  imageUrl:
+                      "https://cdn.aarp.net/content/dam/aarp/food/diet_nutrition/2018/11/1140-supermarket-cart.imgcache.rev80da2c3d04b94db584d7a1c60da824d3.jpg",
+                  height: 80,
+                  width: 100,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "PANDA Supermarket",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700, fontSize: 16),
+                    ),
+                    Text(
+                      "Old Bus stand",
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 1),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.star_border,
+                            color: Colors.black54,
+                            size: 25,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 1),
+                            child: Text(
+                              "4.5",
+                              style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 29),
+                child: Icon(
+                  FontAwesomeIcons.chevronRight,
+                  color: Colors.lightGreenAccent,
+                  size: 18,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
