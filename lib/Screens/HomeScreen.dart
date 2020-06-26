@@ -5,6 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:feelsgood/Components/OfferSwiper.dart';
 import 'package:feelsgood/Repository/OfferSwipers.dart';
+import 'package:feelsgood/Components/TopMarketCard.dart';
+import 'package:feelsgood/bloc/TopMarketbloc.dart';
+import 'package:feelsgood/Models/TopMarket.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = '/home';
@@ -13,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final TopMarketBloc _topMarketBloc = TopMarketBloc();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,91 +114,48 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            Container(
-              height: 143,
-              color: Colors.grey,
-              child: TopMarketCard(),
+            Padding(
+              padding: const EdgeInsets.only(top: 3),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 143,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: FractionalOffset.bottomCenter,
+                    end: FractionalOffset.topCenter,
+                    colors: [
+                      Colors.grey,
+                      Color(0xFFD3D3D3),
+                      Colors.grey,
+                      Colors.black26,
+                    ],
+                    stops: [0.0, 0.95, 0.97, 1.0],
+                  ),
+                ),
+                child: StreamBuilder<List<TopMarket>>(
+                    stream: _topMarketBloc.topMarketListStream,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<TopMarket>> snapshot) {
+                      if (snapshot.hasError) {
+                        print(snapshot.error);
+                      }
+                      return snapshot.hasData
+                          ? ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                return TopMarketCard(
+                                  topMarket: snapshot.data[index],
+                                );
+                              })
+                          : Center(
+                              child: CircularProgressIndicator(),
+                            );
+                    }),
+              ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class TopMarketCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 15),
-          child: Row(
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: CachedNetworkImage(
-                  fit: BoxFit.fill,
-                  imageUrl:
-                      "https://cdn.aarp.net/content/dam/aarp/food/diet_nutrition/2018/11/1140-supermarket-cart.imgcache.rev80da2c3d04b94db584d7a1c60da824d3.jpg",
-                  height: 80,
-                  width: 100,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "PANDA Supermarket",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
-                    ),
-                    Text(
-                      "Old Bus stand",
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 1),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.star_border,
-                            color: Colors.black54,
-                            size: 25,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 1),
-                            child: Text(
-                              "4.5",
-                              style: TextStyle(
-                                  color: Colors.black54,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 29),
-                child: Icon(
-                  FontAwesomeIcons.chevronRight,
-                  color: Colors.lightGreenAccent,
-                  size: 18,
-                ),
-              )
-            ],
-          ),
         ),
       ),
     );
