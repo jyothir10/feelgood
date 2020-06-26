@@ -24,84 +24,104 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
-              color: Colors.green,
-              height: 400,
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Image.asset(
-                        "images/logo.png",
-                        height: 130,
-                        width: 200,
-                      ),
-                      SizedBox(
-                        width: 80,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12, right: 12),
-                        child: Icon(
-                          FontAwesomeIcons.bell,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.end,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Container(
-                          width: 85,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.location_on,
-                                  color: Colors.brown,
-                                ),
-                                Text("Kannur")
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
-                    child: Container(
-                      height: 38,
-                      child: TextField(
-                        enableSuggestions: true,
-                        decoration: kSearchBarDecoration.copyWith(
-                            hintText: "Search Restaurants or Cuisines",
-                            hintStyle:
-                                TextStyle(color: Colors.black38, fontSize: 15)),
+            Stack(
+              children: <Widget>[
+                ClipPath(
+                  clipper: ClippingClass(),
+                  child: Container(
+                    height: 400,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: FractionalOffset.topCenter,
+                        end: FractionalOffset.bottomCenter,
+                        colors: [
+                          Color(0xFF27A504),
+                          Color(0xFF54CE3E),
+                          Colors.white,
+                        ],
+                        stops: [0.0, 0.22, 1],
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 6, left: 6, top: 27),
-                    child: SizedBox(
-                        height: 160.0,
-                        width: MediaQuery.of(context).size.width,
-                        child: Carousel(
-                          showIndicator: false,
-                          radius: Radius.circular(20),
-                          borderRadius: true,
-                          images: offerSwiperList,
-                        )),
-                  ),
-                ],
-              ),
+                ),
+                Column(
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Image.asset(
+                          "images/logo.png",
+                          height: 130,
+                          width: 200,
+                        ),
+                        SizedBox(
+                          width: 80,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12, right: 12),
+                          child: Icon(
+                            FontAwesomeIcons.bell,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.end,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Container(
+                            width: 85,
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.location_on,
+                                    color: Colors.brown,
+                                  ),
+                                  Text("Kannur")
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 15, right: 15, top: 5),
+                      child: Container(
+                        height: 38,
+                        child: TextField(
+                          enableSuggestions: true,
+                          decoration: kSearchBarDecoration.copyWith(
+                              hintText: "Search Restaurants or Cuisines",
+                              hintStyle: TextStyle(
+                                  color: Colors.black38, fontSize: 15)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(right: 6, left: 6, top: 27),
+                      child: SizedBox(
+                          height: 160.0,
+                          width: MediaQuery.of(context).size.width,
+                          child: Carousel(
+                            showIndicator: false,
+                            radius: Radius.circular(20),
+                            borderRadius: true,
+                            images: offerSwiperList,
+                          )),
+                    ),
+                  ],
+                ),
+              ],
             ),
             Row(
               children: <Widget>[
@@ -160,4 +180,24 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+
+class ClippingClass extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0.0, size.height - 75);
+    path.quadraticBezierTo(
+        size.width / 4, size.height, size.width / 2, size.height);
+    path.quadraticBezierTo(
+        size.width - (size.width / 4), size.height, size.width, 120);
+
+    path.lineTo(size.width, 120);
+    path.lineTo(size.width, 0.0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
