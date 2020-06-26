@@ -8,6 +8,7 @@ import 'package:feelsgood/Repository/OfferSwipers.dart';
 import 'package:feelsgood/Components/TopMarketCard.dart';
 import 'package:feelsgood/bloc/TopMarketbloc.dart';
 import 'package:feelsgood/Models/TopMarket.dart';
+import 'package:feelsgood/Styling/ClippingClass.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = '/home';
@@ -44,82 +45,84 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                Column(
-                  children: <Widget>[
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Image.asset(
-                          "images/logo.png",
-                          height: 130,
-                          width: 200,
-                        ),
-                        SizedBox(
-                          width: 80,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 12, right: 12),
-                          child: Icon(
-                            FontAwesomeIcons.bell,
-                            color: Colors.white,
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Image.asset(
+                            "images/logo.png",
+                            height: 130,
+                            width: 200,
                           ),
-                        ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.end,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Container(
-                            width: 85,
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Row(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.location_on,
-                                    color: Colors.brown,
-                                  ),
-                                  Text("Kannur")
-                                ],
+                          SizedBox(
+                            width: 80,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 12, right: 12),
+                            child: Icon(
+                              FontAwesomeIcons.bell,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.end,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Container(
+                              width: 85,
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.location_on,
+                                      color: Colors.brown,
+                                    ),
+                                    Text("Kannur")
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 15, right: 15, top: 5),
-                      child: Container(
-                        height: 38,
-                        child: TextField(
-                          enableSuggestions: true,
-                          decoration: kSearchBarDecoration.copyWith(
-                              hintText: "Search Restaurants or Cuisines",
-                              hintStyle: TextStyle(
-                                  color: Colors.black38, fontSize: 15)),
+                        ],
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(left: 15, right: 15, top: 5),
+                        child: Container(
+                          height: 38,
+                          child: TextField(
+                            enableSuggestions: true,
+                            decoration: kSearchBarDecoration.copyWith(
+                                hintText: "Search Restaurants or Cuisines",
+                                hintStyle: TextStyle(
+                                    color: Colors.black38, fontSize: 15)),
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(right: 6, left: 6, top: 27),
-                      child: SizedBox(
-                          height: 160.0,
-                          width: MediaQuery.of(context).size.width,
-                          child: Carousel(
-                            showIndicator: false,
-                            radius: Radius.circular(20),
-                            borderRadius: true,
-                            images: offerSwiperList,
-                          )),
-                    ),
-                  ],
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(right: 6, left: 6, top: 27),
+                        child: SizedBox(
+                            height: 160.0,
+                            width: MediaQuery.of(context).size.width,
+                            child: Carousel(
+                              showIndicator: false,
+                              radius: Radius.circular(20),
+                              borderRadius: true,
+                              images: offerSwiperList,
+                            )),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -182,22 +185,3 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class ClippingClass extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(0.0, size.height - 75);
-    path.quadraticBezierTo(
-        size.width / 4, size.height, size.width / 2, size.height);
-    path.quadraticBezierTo(
-        size.width - (size.width / 4), size.height, size.width, 120);
-
-    path.lineTo(size.width, 120);
-    path.lineTo(size.width, 0.0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-}
