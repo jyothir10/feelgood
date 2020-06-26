@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ClipPath(
                   clipper: ClippingClass(),
                   child: Container(
-                    height: 400,
+                    height: 410,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: FractionalOffset.topCenter,
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         colors: [
                           Color(0xFF27A504),
                           Color(0xFF54CE3E),
-                          Colors.white,
+                          Color(0xFFC8F6C8),
                         ],
                         stops: [0.0, 0.22, 1],
                       ),
@@ -94,19 +94,25 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 15, right: 15, top: 5),
-                        child: Container(
-                          height: 38,
-                          child: TextField(
-                            enableSuggestions: true,
-                            decoration: kSearchBarDecoration.copyWith(
-                                hintText: "Search Restaurants or Cuisines",
-                                hintStyle: TextStyle(
-                                    color: Colors.black38, fontSize: 15)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 15, right: 15, top: 5),
+                            child: Container(
+                              height: 38,
+                              width: 370,
+                              child: TextField(
+                                enableSuggestions: true,
+                                decoration: kSearchBarDecoration.copyWith(
+                                    hintText: "Search Restaurants or Cuisines",
+                                    hintStyle: TextStyle(
+                                        color: Colors.black38, fontSize: 15)),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                       Padding(
                         padding:
