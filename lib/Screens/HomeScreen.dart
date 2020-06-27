@@ -1,14 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feelsgood/Styling/Constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:feelsgood/Components/OfferSwiper.dart';
 import 'package:feelsgood/Repository/OfferSwipers.dart';
 import 'package:feelsgood/Components/TopMarketCard.dart';
 import 'package:feelsgood/bloc/TopMarketbloc.dart';
 import 'package:feelsgood/Models/TopMarket.dart';
 import 'package:feelsgood/Styling/ClippingClass.dart';
+import 'package:feelsgood/Components/NearMarket.dart';
+import 'package:feelsgood/bloc/NearMarketbloc.dart';
+import 'package:feelsgood/Models/NearMarket.dart';
+import 'package:feelsgood/Components/BottomBar.dart';
+import 'package:feelsgood/Components/TrendingCard.dart';
+import 'package:feelsgood/Models/Trending.dart';
+import 'package:feelsgood/bloc/Trendingbloc.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = '/home';
@@ -18,10 +25,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TopMarketBloc _topMarketBloc = TopMarketBloc();
+  final NearMarketBloc _nearMarketBloc = NearMarketBloc();
+  final TrendingBloc _trendingBloc = TrendingBloc();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomBar(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -54,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Image.asset(
                             "images/logo.png",
                             height: 130,
-                            width: 200,
+                            width: 210,
                           ),
                           SizedBox(
                             width: 80,
@@ -102,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 left: 15, right: 15, top: 5),
                             child: Container(
                               height: 38,
-                              width: 370,
+                              width: MediaQuery.of(context).size.width - 40,
                               child: TextField(
                                 enableSuggestions: true,
                                 decoration: kSearchBarDecoration.copyWith(
@@ -138,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.only(left: 10, top: 5),
                   child: Text(
                     "Top Markets",
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                 ),
               ],
@@ -148,23 +158,99 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 143,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: FractionalOffset.bottomCenter,
-                    end: FractionalOffset.topCenter,
-                    colors: [
-                      Colors.grey,
-                      Color(0xFFD3D3D3),
-                      Colors.grey,
-                      Colors.black26,
-                    ],
-                    stops: [0.0, 0.95, 0.97, 1.0],
+                decoration: kBoxDecoration,
+                child: StreamBuilder<List<TopMarket>>(
+                  stream: _topMarketBloc.topMarketListStream,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<TopMarket>> snapshot) {
+                    if (snapshot.hasError) {
+                      print(snapshot.error);
+                    }
+                    return snapshot.hasData
+                        ? ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (context, index) {
+                              return TopMarketCard(
+                                topMarket: snapshot.data[index],
+                              );
+                            })
+                        : Center(
+                            child: CircularProgressIndicator(),
+                          );
+                  },
+                ),
+              ),
+            ),
+            Divider(
+              color: Colors.grey,
+              thickness: 2,
+            ),
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: Text(
+                    "Nearby Supermarkets",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                 ),
-                child: StreamBuilder<List<TopMarket>>(
-                    stream: _topMarketBloc.topMarketListStream,
+              ],
+            ),
+            Container(
+              height: 400,
+              child: StreamBuilder<List<NearMarket>>(
+                stream: _nearMarketBloc.nearMarketListStream,
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<NearMarket>> snapshot) {
+                  if (snapshot.hasError) {
+                    print(snapshot.error);
+                  }
+                  return snapshot.hasData
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (context, index) {
+                            return NearMarketCard(
+                              nearMarket: snapshot.data[index],
+                            );
+                          })
+                      : Center(
+                          child: CircularProgressIndicator(),
+                        );
+                },
+              ),
+            ),
+            Divider(
+              color: Colors.grey,
+              thickness: 2,
+            ),
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: Text(
+                    "Trending this week",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Container(
+                decoration: kBoxDecoration,
+                height: 170,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  child: StreamBuilder<List<Trending>>(
+                    stream: _trendingBloc.trendingListStream,
                     builder: (BuildContext context,
-                        AsyncSnapshot<List<TopMarket>> snapshot) {
+                        AsyncSnapshot<List<Trending>> snapshot) {
                       if (snapshot.hasError) {
                         print(snapshot.error);
                       }
@@ -174,14 +260,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               scrollDirection: Axis.horizontal,
                               itemCount: snapshot.data.length,
                               itemBuilder: (context, index) {
-                                return TopMarketCard(
-                                  topMarket: snapshot.data[index],
+                                return TrendingCard(
+                                  trending: snapshot.data[index],
                                 );
                               })
                           : Center(
                               child: CircularProgressIndicator(),
                             );
-                    }),
+                    },
+                  ),
+                ),
               ),
             ),
           ],

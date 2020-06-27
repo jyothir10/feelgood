@@ -17,3 +17,16 @@ const kSearchBarDecoration = InputDecoration(
     borderSide: BorderSide(color: Colors.white),
   ),
 );
+const kBoxDecoration = BoxDecoration(
+  gradient: LinearGradient(
+    begin: FractionalOffset.bottomCenter,
+    end: FractionalOffset.topCenter,
+    colors: [
+      Colors.grey,
+      Color(0xFFD3D3D3),
+      Colors.grey,
+      Colors.black26,
+    ],
+    stops: [0.0, 0.95, 0.97, 1.0],
+  ),
+);
