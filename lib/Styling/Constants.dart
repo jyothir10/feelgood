@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kCardColor = Color(0xFFACB6B9);
+const kScreenColor = Color(0xFF08767D);
 const kBorderColor = Colors.grey;
 const kSearchBarDecoration = InputDecoration(
   filled: true,

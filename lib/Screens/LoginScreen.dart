@@ -6,13 +6,13 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:feelsgood/Styling/Constants.dart';
 
-class SignUpScreen extends StatefulWidget {
-  static const String id = '/signup';
+class LoginScreen extends StatefulWidget {
+  static const String id = '/login';
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   bool status = false;
   @override
   Widget build(BuildContext context) {
@@ -37,56 +37,82 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(bottom: 21),
-                    child: Text(
-                      "Signup",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontFamily: 'Open Sans',
-                          fontWeight: FontWeight.bold),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Anything, Anytime",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 25,
+                              fontFamily: 'Open Sans'),
+                        ),
+                        Text(
+                          "Right Away!",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 25,
+                              fontFamily: 'Open Sans'),
+                        ),
+                      ],
                     ),
                   ),
                   Column(
                     children: <Widget>[
-                      TextBox(
-                        hintText: "First Name",
-                      ),
-                      TextBox(hintText: "Last Name"),
                       TextBox(hintText: "Email"),
                       TextBox(hintText: "Password"),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 32, top: 3),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            FlutterSwitch(
-                              toggleColor: Colors.grey,
-                              inactiveColor: Colors.black,
-                              activeColor: Colors.white70,
-                              width: 58.0,
-                              height: 25.0,
-                              valueFontSize: 12.0,
-                              toggleSize: 18.0,
-                              value: status,
-                              onToggle: (val) {
-                                setState(() {
-                                  status = val;
-                                });
-                              },
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 32, top: 3),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                FlutterSwitch(
+                                  toggleColor: Colors.grey,
+                                  inactiveColor: Colors.black,
+                                  activeColor: Colors.white70,
+                                  width: 58.0,
+                                  height: 25.0,
+                                  valueFontSize: 12.0,
+                                  toggleSize: 18.0,
+                                  value: status,
+                                  onToggle: (val) {
+                                    setState(() {
+                                      status = val;
+                                    });
+                                  },
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: Text("Remember?",
+                                      style: GoogleFonts.lato(
+                                        textStyle: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Open Sans'),
+                                      )),
+                                )
+                              ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: Text("Remember?",
-                                  style: GoogleFonts.lato(
-                                    textStyle: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Open Sans'),
-                                  )),
-                            )
-                          ],
-                        ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 5, right: 32, top: 3),
+                            child: Text("Forgot Password?",
+                                style: GoogleFonts.lato(
+                                  textStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'Open Sans'),
+                                )),
+                          )
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 3, left: 36),
@@ -120,7 +146,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 18, vertical: 0),
                               child: Text(
-                                "Sign Up",
+                                "PROCEED",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: 'Open Sans',
