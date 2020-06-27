@@ -13,7 +13,7 @@ List<TopMarket> topMarketList = [
       "4.5"),
   TopMarket(
       "Greens Hypermarket",
-      "https://lh3.googleusercontent.com/proxy/nXzUV4tuufxyCFnGp1ecbLeNBl0lw9cASdaXl0JXs8RWRtSfzFt6FLR4rll5GgFzKX7CmQMqetHHBS9DaelSVJ95qwjoYGqB",
+      "https://s3.amazonaws.com/zaubatrademarks/7b199b88-17c3-45a9-a736-ee36440dde2e.png",
       "Kannur city",
       "4.5")
 ];
