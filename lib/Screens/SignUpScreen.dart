@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:feelsgood/Components/TextBox.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const String id = '/signup';
@@ -53,32 +54,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-class TextBox extends StatelessWidget {
-  String hintText;
-  TextBox({@required this.hintText});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Container(
-        width: MediaQuery.of(context).size.width / 1.2,
-        child: TextField(
-          decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                borderSide: BorderSide(color: Colors.white),
-              ),
-              filled: true,
-              fillColor: Colors.white,
-              hintText: hintText,
-              hintStyle: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500)),
-        ),
-      ),
-    );
-  }
-}
