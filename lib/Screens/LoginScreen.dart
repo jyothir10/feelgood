@@ -13,8 +13,17 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   bool status = false;
+  AnimationController controller;
+  double value = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,8 +71,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Column(
                     children: <Widget>[
-                      TextBox(hintText: "Email"),
-                      TextBox(hintText: "Password"),
+                      Hero(
+                        tag: "email",
+                        child: FlatButton(
+                          child: TextBox(hintText: "Email"),
+                        ),
+                      ),
+                      Hero(
+                        tag: "password",
+                        child: FlatButton(
+                          child: TextBox(hintText: "Password"),
+                        ),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -72,20 +91,23 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                FlutterSwitch(
-                                  toggleColor: Colors.grey,
-                                  inactiveColor: Colors.black,
-                                  activeColor: Colors.white70,
-                                  width: 58.0,
-                                  height: 25.0,
-                                  valueFontSize: 12.0,
-                                  toggleSize: 18.0,
-                                  value: status,
-                                  onToggle: (val) {
-                                    setState(() {
-                                      status = val;
-                                    });
-                                  },
+                                Hero(
+                                  tag: "switch",
+                                  child: FlutterSwitch(
+                                    toggleColor: Colors.grey,
+                                    inactiveColor: Colors.black,
+                                    activeColor: Colors.white70,
+                                    width: 58.0,
+                                    height: 25.0,
+                                    valueFontSize: 12.0,
+                                    toggleSize: 18.0,
+                                    value: status,
+                                    onToggle: (val) {
+                                      setState(() {
+                                        status = val;
+                                      });
+                                    },
+                                  ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5),
@@ -129,7 +151,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(18),
                             ),
                             color: Color(0xFFD19139),
-                            onPressed: () {},
+                            onPressed: () {
+                              controller = AnimationController(
+                                duration: Duration(seconds: 3),
+                                vsync: this,
+                              );
+                              controller.forward();
+                              controller.addListener(
+                                () {
+                                  setState(() {
+                                    value = controller.value;
+                                  });
+                                },
+                              );
+                            },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 0),
@@ -166,10 +201,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Positioned(
-                      child: Image.asset(
-                        "images/scooter.png",
-                        height: 130,
-                        width: 100,
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: value * 500,
+                          ),
+                          Image.asset(
+                            "images/scooter1.png",
+                            height: 170,
+                            width: 100,
+                          ),
+                        ],
                       ),
                       top: 70,
                       left: 0,

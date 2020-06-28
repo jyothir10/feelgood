@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:feelsgood/Styling/Constants.dart';
+import 'package:feelsgood/Screens/LoginScreen.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const String id = '/signup';
@@ -52,27 +53,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: "First Name",
                       ),
                       TextBox(hintText: "Last Name"),
-                      TextBox(hintText: "Email"),
-                      TextBox(hintText: "Password"),
+                      Hero(
+                        tag: "email",
+                        child: FlatButton(
+                          child: TextBox(hintText: "Email"),
+                        ),
+                      ),
+                      Hero(
+                        tag: "password",
+                        child: FlatButton(
+                          child: FlatButton(
+                            child: TextBox(hintText: "Password"),
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 32, top: 3),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            FlutterSwitch(
-                              toggleColor: Colors.grey,
-                              inactiveColor: Colors.black,
-                              activeColor: Colors.white70,
-                              width: 58.0,
-                              height: 25.0,
-                              valueFontSize: 12.0,
-                              toggleSize: 18.0,
-                              value: status,
-                              onToggle: (val) {
-                                setState(() {
-                                  status = val;
-                                });
-                              },
+                            Hero(
+                              tag: "switch",
+                              child: FlutterSwitch(
+                                toggleColor: Colors.grey,
+                                inactiveColor: Colors.black,
+                                activeColor: Colors.white70,
+                                width: 58.0,
+                                height: 25.0,
+                                valueFontSize: 12.0,
+                                toggleSize: 18.0,
+                                value: status,
+                                onToggle: (val) {
+                                  setState(() {
+                                    status = val;
+                                  });
+                                },
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 5),
@@ -147,7 +163,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 borderRadius: BorderRadius.circular(18),
                               ),
                               color: Color(0xFFD19139),
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  Navigator.pushNamed(context, LoginScreen.id);
+                                });
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 18, vertical: 0),
