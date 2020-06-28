@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:feelsgood/Styling/Constants.dart';
+import 'package:feelsgood/Screens/SignUpScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = '/login';
@@ -88,54 +89,41 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5),
-                                  child: Text("Remember?",
-                                      style: GoogleFonts.lato(
-                                        textStyle: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Open Sans'),
-                                      )),
-                                )
+                                  child: Text(
+                                    "Remember?",
+                                    style: GoogleFonts.lato(
+                                      textStyle: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Open Sans'),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
                                 left: 5, right: 32, top: 3),
-                            child: Text("Forgot Password?",
-                                style: GoogleFonts.lato(
-                                  textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Open Sans'),
-                                )),
-                          )
+                            child: Text(
+                              "Forgot Password?",
+                              style: GoogleFonts.lato(
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Open Sans'),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 3, left: 36),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              "By signing up you Agree to our Terms and Conditions",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12,
-                                fontFamily: 'Open Sans',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 29),
                         child: SizedBox(
-                          height: 30,
-                          width: 160,
+                          height: 35,
+                          width: 140,
                           child: RaisedButton(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18),
@@ -144,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {},
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 18, vertical: 0),
+                                  horizontal: 10, vertical: 0),
                               child: Text(
                                 "PROCEED",
                                 style: TextStyle(
@@ -163,15 +151,56 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    "images/scooter.png",
-                    height: 130,
-                    width: 100,
-                  ),
-                ],
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 200,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 64,
+                      child: Image.asset(
+                        "images/grass.png",
+                        height: 210,
+                        width: 270,
+                      ),
+                    ),
+                    Positioned(
+                      child: Image.asset(
+                        "images/scooter.png",
+                        height: 130,
+                        width: 100,
+                      ),
+                      top: 70,
+                      left: 0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Don't have an account?",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: 'Open Sans'),
+                        ),
+                        FlatButton(
+                          onPressed: () {
+                            setState(() {
+                              Navigator.pushNamed(context, SignUpScreen.id);
+                            });
+                          },
+                          child: Text(
+                            "Sign Up",
+                            style: TextStyle(
+                                color: Color(0xFF24C8F0),
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                  fit: StackFit.loose,
+                ),
               ),
             ),
           ],

@@ -105,47 +105,69 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: SizedBox(
-                          height: 30,
-                          width: 160,
-                          child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                            color: Color(0xFFD19139),
-                            onPressed: () {},
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 18, vertical: 0),
-                              child: Text(
-                                "Sign Up",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 18),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   )
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    "images/scooter.png",
-                    height: 130,
-                    width: 100,
-                  ),
-                ],
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 200,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 64,
+                      child: Image.asset(
+                        "images/grass.png",
+                        height: 210,
+                        width: 270,
+                      ),
+                    ),
+                    Positioned(
+                      child: Image.asset(
+                        "images/scooter.png",
+                        height: 130,
+                        width: 100,
+                      ),
+                      top: 70,
+                      left: 0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: SizedBox(
+                            height: 30,
+                            width: 160,
+                            child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              color: Color(0xFFD19139),
+                              onPressed: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18, vertical: 0),
+                                child: Text(
+                                  "Sign Up",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'Open Sans',
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 18),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                  fit: StackFit.loose,
+                ),
               ),
             ),
           ],
