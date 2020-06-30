@@ -21,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   void initState() {
+    value = 0;
     super.initState();
   }
 
@@ -146,35 +147,38 @@ class _LoginScreenState extends State<LoginScreen>
                         child: SizedBox(
                           height: 35,
                           width: 140,
-                          child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                            color: Color(0xFFD19139),
-                            onPressed: () {
-                              controller = AnimationController(
-                                duration: Duration(seconds: 3),
-                                vsync: this,
-                              );
-                              controller.forward();
-                              controller.addListener(
-                                () {
-                                  setState(() {
-                                    value = controller.value;
-                                  });
-                                },
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 0),
-                              child: Text(
-                                "PROCEED",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 18),
+                          child: Hero(
+                            tag: "button",
+                            child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              color: Color(0xFFD19139),
+                              onPressed: () {
+                                controller = AnimationController(
+                                  duration: Duration(seconds: 3),
+                                  vsync: this,
+                                );
+                                controller.forward();
+                                controller.addListener(
+                                  () {
+                                    setState(() {
+                                      value = controller.value;
+                                    });
+                                  },
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 0),
+                                child: Text(
+                                  "PROCEED",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'Open Sans',
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 18),
+                                ),
                               ),
                             ),
                           ),
@@ -194,10 +198,13 @@ class _LoginScreenState extends State<LoginScreen>
                   children: <Widget>[
                     Positioned(
                       left: 64,
-                      child: Image.asset(
-                        "images/grass.png",
-                        height: 210,
-                        width: 270,
+                      child: Hero(
+                        tag: "grass",
+                        child: Image.asset(
+                          "images/grass.png",
+                          height: 210,
+                          width: 270,
+                        ),
                       ),
                     ),
                     Positioned(
@@ -206,10 +213,13 @@ class _LoginScreenState extends State<LoginScreen>
                           SizedBox(
                             width: value * 500,
                           ),
-                          Image.asset(
-                            "images/scooter1.png",
-                            height: 170,
-                            width: 100,
+                          Hero(
+                            tag: "scooter",
+                            child: Image.asset(
+                              "images/scooter1.png",
+                              height: 170,
+                              width: 100,
+                            ),
                           ),
                         ],
                       ),

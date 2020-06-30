@@ -15,6 +15,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool status = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,17 +136,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: <Widget>[
                     Positioned(
                       left: 64,
-                      child: Image.asset(
-                        "images/grass.png",
-                        height: 210,
-                        width: 270,
+                      child: Hero(
+                        tag: "grass",
+                        child: Image.asset(
+                          "images/grass.png",
+                          height: 210,
+                          width: 270,
+                        ),
                       ),
                     ),
                     Positioned(
-                      child: Image.asset(
-                        "images/scooter.png",
-                        height: 130,
-                        width: 100,
+                      child: Hero(
+                        tag: "scooter",
+                        child: Image.asset(
+                          "images/scooter1.png",
+                          height: 170,
+                          width: 100,
+                        ),
                       ),
                       top: 70,
                       left: 0,
@@ -158,26 +165,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           child: SizedBox(
                             height: 30,
                             width: 160,
-                            child: RaisedButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              color: Color(0xFFD19139),
-                              onPressed: () {
-                                setState(() {
-                                  Navigator.pushNamed(context, LoginScreen.id);
-                                });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 18, vertical: 0),
-                                child: Text(
-                                  "Sign Up",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 18),
+                            child: Hero(
+                              tag: "button",
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                                color: Color(0xFFD19139),
+                                onPressed: () {
+                                  setState(() {
+                                    Navigator.pushNamed(
+                                        context, LoginScreen.id);
+                                  });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 18, vertical: 0),
+                                  child: Text(
+                                    "Sign Up",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Open Sans',
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 18),
+                                  ),
                                 ),
                               ),
                             ),
