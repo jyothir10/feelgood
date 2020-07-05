@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
 import 'package:feelsgood/Styling/Constants.dart';
+import 'package:feelsgood/Components/AccountButton.dart';
 
 class AccountScreen extends StatefulWidget {
   static const String id = '/account';
@@ -70,8 +71,45 @@ class _AccountScreenState extends State<AccountScreen> {
                     color: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
+                      side: BorderSide(color: Colors.black54),
                     ),
                     elevation: 25,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Column(
+                              children: <Widget>[
+                                AccountButton(text: "Update Profile"),
+                                AccountButton(text: "Manage Address"),
+                                AccountButton(text: "Payments"),
+                                AccountButton(text: "My Orders"),
+                              ],
+                            ),
+                            FlatButton(
+                              onPressed: () {},
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              color: kScreenColor,
+                              child: Text(
+                                "LOGOUT",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
