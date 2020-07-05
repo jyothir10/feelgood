@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feelsgood/Models/MarketCart.dart';
 
 class MarketCartCard extends StatelessWidget {
-  final int count = 01;
   final Function plus;
   final Function minus;
   final MarketCart marketCart;
@@ -26,7 +25,6 @@ class MarketCartCard extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   imageUrl: marketCart.image,
-//                  "https://www.lgssales.com/wp-content/uploads/2017/07/darling-oranges-1.png",
                   height: 80,
                   width: 100,
                 ),
@@ -55,37 +53,38 @@ class MarketCartCard extends StatelessWidget {
                       elevation: 5,
                       child: Row(
                         children: <Widget>[
-                          Container(
-                            child: FlatButton(
-                              onPressed: minus,
+                          GestureDetector(
+                            onTap: minus,
+                            child: Container(
                               child: Icon(
                                 Icons.remove,
                                 color: Colors.black,
                                 size: 17,
                               ),
+                              height: 23,
+                              width: 24,
+                              color: Color(0xFFD3D3D3),
                             ),
-                            height: 23,
-                            width: 24,
-                            color: Color(0xFFD3D3D3),
                           ),
                           Container(
                             height: 23,
                             width: 30,
                             color: Colors.white,
-                            child: Center(child: Text("$count")),
+                            child:
+                                Center(child: Text("${marketCart.quantity}")),
                           ),
-                          Container(
-                            child: FlatButton(
-                              onPressed: plus,
+                          GestureDetector(
+                            onTap: plus,
+                            child: Container(
                               child: Icon(
                                 Icons.add,
                                 color: Colors.black,
                                 size: 17,
                               ),
+                              height: 23,
+                              width: 24,
+                              color: Color(0xFFD3D3D3),
                             ),
-                            height: 23,
-                            width: 24,
-                            color: Color(0xFFD3D3D3),
                           ),
                         ],
                       ),
