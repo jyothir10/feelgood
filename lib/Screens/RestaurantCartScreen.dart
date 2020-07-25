@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:feelsgood/Components/ResCartCard.dart';
 import 'package:feelsgood/Models/MarketCart.dart';
 import 'package:feelsgood/bloc/ResCartbloc.dart';
+import 'package:feelsgood/Components/DrinksCard.dart';
+import 'package:feelsgood/bloc/Drinksbloc.dart';
+import 'package:feelsgood/Models/Item.dart';
 
 class RestaurantCartScreen extends StatefulWidget {
   static const String id = '/Rcart';
@@ -13,6 +16,7 @@ class RestaurantCartScreen extends StatefulWidget {
 
 class _RestaurantCartScreenState extends State<RestaurantCartScreen> {
   final ResCartBloc _resCartBloc = ResCartBloc();
+  final DrinksBloc _drinksBloc = DrinksBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,6 @@ class _RestaurantCartScreenState extends State<RestaurantCartScreen> {
               child: SingleChildScrollView(
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
                   decoration: BoxDecoration(
                     color: Color(0xFF880807),
                     borderRadius: BorderRadius.only(
@@ -110,109 +113,98 @@ class _RestaurantCartScreenState extends State<RestaurantCartScreen> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Card(
+                        padding: const EdgeInsets.only(top: 25, left: 4),
+                        child: Container(
+                          height: 90,
                           color: Color(0xFFCFA7A7),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: CachedNetworkImage(
-                                      imageUrl:
-                                          "https://smartshopper.tech/images/products/5/3/5301000172427.jpg",
-                                      height: 70,
-                                      width: 55,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 4),
-                                          child: Text(
-                                            "7up",
-                                            style: TextStyle(
-                                                fontFamily: "Open Sans-Bold",
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 19),
-                                          ),
-                                        ),
-                                        Text("\$1.5"),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                          child: StreamBuilder<List<Item>>(
+                            stream: _drinksBloc.drinksListStream,
+                            builder: (BuildContext context,
+                                AsyncSnapshot<List<Item>> snapshot) {
+                              if (snapshot.hasError) {
+                                print(snapshot.error);
+                              }
+                              return snapshot.hasData
+                                  ? ListView.builder(
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: snapshot.data.length,
+                                      itemBuilder: (context, index) {
+                                        return DrinksCard(
+                                          drink: snapshot.data[index],
+                                        );
+                                      })
+                                  : Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                            },
                           ),
                         ),
                       ),
-                      Container(
-                        color: Color(0xFF4A0203),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(top: 15),
-                              child: Padding(
+                      Padding(
+                        padding: const EdgeInsets.only(top: 30),
+                        child: Container(
+                          color: Color(0xFF4A0203),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(top: 15),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 27),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text(
+                                        "Total",
+                                        style: TextStyle(
+                                            fontFamily: 'Open Sans-ExtraBold',
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 27,
+                                            color: Colors.white),
+                                      ),
+                                      Text(
+                                        "\$10",
+                                        style: TextStyle(
+                                            fontFamily: 'Open Sans-Bold',
+                                            fontWeight: FontWeight.w900,
+                                            fontSize: 27,
+                                            color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 27),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text(
-                                      "Total",
-                                      style: TextStyle(
-                                          fontFamily: 'Open Sans-ExtraBold',
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 27,
-                                          color: Colors.white),
+                                    const EdgeInsets.only(top: 15, bottom: 40),
+                                child: Container(
+                                  width: 300,
+                                  child: RaisedButton(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18),
                                     ),
-                                    Text(
-                                      "\$10",
-                                      style: TextStyle(
-                                          fontFamily: 'Open Sans-Bold',
-                                          fontWeight: FontWeight.w900,
-                                          fontSize: 27,
-                                          color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 15, bottom: 40),
-                              child: Container(
-                                width: 300,
-                                child: RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                  color: Colors.yellow,
-                                  onPressed: () {},
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 25, vertical: 0),
-                                    child: Text(
-                                      "Make Order",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Open Sans',
-                                          fontWeight: FontWeight.w900,
-                                          fontSize: 18),
+                                    color: Colors.orangeAccent,
+                                    onPressed: () {},
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 25, vertical: 0),
+                                      child: Text(
+                                        "Make Order",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: 'Open Sans',
+                                            fontWeight: FontWeight.w900,
+                                            fontSize: 18),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],

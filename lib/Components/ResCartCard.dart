@@ -42,7 +42,7 @@ class ResCartCard extends StatelessWidget {
                     Text(
                       resCart.name,
                       style: TextStyle(
-                          fontSize: 21.5,
+                          fontSize: 19,
                           color: Colors.white,
                           fontFamily: "Open Sans-Bold"),
                     ),
@@ -98,7 +98,7 @@ class ResCartCard extends StatelessWidget {
                       child: Text(
                         "\$${resCart.price}",
                         style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 20,
                             color: Colors.white,
                             fontFamily: "Open Sans-Bold"),
                       ),
