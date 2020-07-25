@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:feelsgood/Components/ResCartCard.dart';
@@ -46,14 +47,14 @@ class _RestaurantCartScreenState extends State<RestaurantCartScreen> {
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Container(
                         color: Colors.transparent,
                         height: 120,
                         width: MediaQuery.of(context).size.width,
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 15),
+                          padding: const EdgeInsets.only(left: 15, top: 10),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,8 +71,8 @@ class _RestaurantCartScreenState extends State<RestaurantCartScreen> {
                         ),
                       ),
                       Container(
-                        height: 400,
-                        color: Color(0xFF880807),
+                        height: 305,
+                        color: Color(0xFFCFA7A7),
                         child: StreamBuilder<List<MarketCart>>(
                           stream: _resCartBloc.resCartListStream,
                           builder: (BuildContext context,
@@ -106,6 +107,49 @@ class _RestaurantCartScreenState extends State<RestaurantCartScreen> {
                                     child: CircularProgressIndicator(),
                                   );
                           },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Card(
+                          color: Color(0xFFCFA7A7),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                          "https://smartshopper.tech/images/products/5/3/5301000172427.jpg",
+                                      height: 70,
+                                      width: 55,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 4),
+                                          child: Text(
+                                            "7up",
+                                            style: TextStyle(
+                                                fontFamily: "Open Sans-Bold",
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 19),
+                                          ),
+                                        ),
+                                        Text("\$1.5"),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Container(
