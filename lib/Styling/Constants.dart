@@ -31,3 +31,6 @@ const kBoxDecoration = BoxDecoration(
     stops: [0.0, 0.95, 0.97, 1.0],
   ),
 );
+
+const kRestaurantTextStyle = TextStyle(
+    fontSize: 20, fontWeight: FontWeight.w500, fontFamily: "Open Sans-Bold");

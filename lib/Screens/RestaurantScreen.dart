@@ -1,8 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:feelsgood/Styling/ClippingClass.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:feelsgood/Styling/Constants.dart';
 import 'package:feelsgood/Components/RestaurantTopCard.dart';
+import 'package:feelsgood/Components/TypeCard.dart';
+import 'package:feelsgood/bloc/Typebloc.dart';
+import 'package:feelsgood/Models/Type.dart';
+import 'package:feelsgood/Styling/Constants.dart';
+import 'package:feelsgood/Components/WofferCard.dart';
+import 'package:feelsgood/Components/PopularCard.dart';
 
 class RestaurantScreen extends StatefulWidget {
   static const String id = '/restaurant';
@@ -11,6 +19,8 @@ class RestaurantScreen extends StatefulWidget {
 }
 
 class _RestaurantScreenState extends State<RestaurantScreen> {
+  TypeBloc _typeBloc = TypeBloc();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,6 +109,79 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                         ),
                       ],
                     ),
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, top: 8, bottom: 5),
+                          child: Text(
+                            "What would you like to order?",
+                            style: kRestaurantTextStyle,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 102,
+                        decoration: BoxDecoration(
+                            boxShadow: [BoxShadow(blurRadius: 5)],
+                            color: Color(0xFFFFD3D3)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: StreamBuilder<List<Type>>(
+                            stream: _typeBloc.typeListStream,
+                            builder: (BuildContext context,
+                                AsyncSnapshot<List<Type>> snapshot) {
+                              if (snapshot.hasError) {
+                                print(snapshot.error);
+                              }
+                              return snapshot.hasData
+                                  ? ListView.builder(
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: snapshot.data.length,
+                                      itemBuilder: (context, index) {
+                                        return TypeCard(
+                                          type: snapshot.data[index],
+                                        );
+                                      })
+                                  : Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, top: 5, bottom: 5),
+                          child: Text(
+                            "Weekly Offers",
+                            style: kRestaurantTextStyle,
+                          ),
+                        ),
+                      ],
+                    ),
+                    WofferCard(),
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, top: 5, bottom: 5),
+                          child: Text(
+                            "Popular Taste",
+                            style: kRestaurantTextStyle,
+                          ),
+                        ),
+                      ],
+                    ),
+                    PopularCard(),
                   ],
                 ),
               )
