@@ -163,6 +163,22 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       title: "Nearby Restaurants",
                     ),
                     NearResCard(), //todo:streambuilder for nearres
+                    RestaurantTitles(title: "Popular Cuisines"),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Color(0xFF696969), width: 3),
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(34),
+                              topRight: Radius.circular(34)),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )
