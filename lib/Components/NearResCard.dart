@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 //todo:model
 /*Model should have
 name
 image
 rating
-offer
  */
 
-class WofferCard extends StatelessWidget {
+class NearResCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 165,
+      height: 145,
       width: 175,
       child: Card(
         color: Color(0xFFF3F3F3),
@@ -77,14 +76,6 @@ class WofferCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Text(
-                        "50% Offer", //todo:offer here
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Color(0xFF9D0707),
-                        ),
-                      )
                     ],
                   ),
                 ],

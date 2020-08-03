@@ -14,7 +14,7 @@ class PopularCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 212,
+      height: 200,
       width: 175,
       child: Stack(
         children: <Widget>[

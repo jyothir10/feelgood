@@ -11,6 +11,7 @@ import 'package:feelsgood/Models/Type.dart';
 import 'package:feelsgood/Styling/Constants.dart';
 import 'package:feelsgood/Components/WofferCard.dart';
 import 'package:feelsgood/Components/PopularCard.dart';
+import 'package:feelsgood/Components/NearResCard.dart';
 
 class RestaurantScreen extends StatefulWidget {
   static const String id = '/restaurant';
@@ -182,6 +183,28 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       ],
                     ),
                     PopularCard(),
+                    Container(
+                      height: 150,
+                      width: MediaQuery.of(context).size.width,
+                      child: CachedNetworkImage(
+                        fit: BoxFit.fill,
+                        imageUrl:
+                            "https://dubaisavers.com/wp-content/uploads/2018/11/BURGER-KING.jpg",
+                      ),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, top: 5, bottom: 5),
+                          child: Text(
+                            "Nearby Restaurants",
+                            style: kRestaurantTextStyle,
+                          ),
+                        ),
+                      ],
+                    ),
+                    NearResCard(),
                   ],
                 ),
               )
