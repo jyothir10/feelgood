@@ -6,7 +6,7 @@ import 'dart:async';
 Timer timer;
 
 void _showDialog(BuildContext context) {
-  timer = Timer(Duration(milliseconds: 1000), () {
+  timer = Timer(Duration(milliseconds: 2000), () {
     showDialog(
         context: context,
         builder: (context) {
@@ -20,11 +20,12 @@ void _showDialog(BuildContext context) {
               width: 50,
             ),
             content: Container(
-              height: 50,
+              height: 60,
+              width: 300,
               child: Column(
                 children: <Widget>[
                   Text(
-                    "FEELGOOD is Requesting to Access ",
+                    "FEELGOOD is Requesting to ",
                     style: TextStyle(
                         color: Colors.black,
                         fontFamily: "Open Sans-Bold",
@@ -32,7 +33,7 @@ void _showDialog(BuildContext context) {
                         fontSize: 18),
                   ),
                   Text(
-                    "Your Current Location ",
+                    "Access Your Current Location ",
                     style: TextStyle(
                         color: Colors.black,
                         fontFamily: "Open Sans-Bold",
@@ -49,7 +50,7 @@ void _showDialog(BuildContext context) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 20),
+                    padding: const EdgeInsets.only(left: 5, right: 22),
                     child: Container(
                       width: 100,
                       child: FlatButton(
@@ -75,7 +76,7 @@ void _showDialog(BuildContext context) {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 30, left: 20),
+                    padding: const EdgeInsets.only(right: 5, left: 22),
                     child: Container(
                       width: 100,
                       child: FlatButton(

@@ -7,6 +7,7 @@ import 'package:feelsgood/Screens/AccountScreen.dart';
 import 'package:feelsgood/Screens/SuperMarketCartScreen.dart';
 import 'package:feelsgood/Screens/RestaurantCartScreen.dart';
 import 'Screens/PermissionScreen.dart';
+import 'Screens/OrderScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: PermissionScreen.id,
+      initialRoute: OrderScreen.id,
       routes: {
         SupermarketScreen.id: (context) => SupermarketScreen(),
         HomeScreen.id: (context) => HomeScreen(),
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         SuperMarketCartScreen.id: (context) => SuperMarketCartScreen(),
         RestaurantCartScreen.id: (context) => RestaurantCartScreen(),
         PermissionScreen.id: (context) => PermissionScreen(),
+        OrderScreen.id: (context) => OrderScreen(),
       },
     );
   }
