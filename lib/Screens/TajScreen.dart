@@ -8,7 +8,6 @@ import 'package:feelsgood/bloc/Tajbloc.dart';
 import 'package:feelsgood/Components/TajCard.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 
 class TajScreen extends StatefulWidget {
   static const String id = '/Taj';
