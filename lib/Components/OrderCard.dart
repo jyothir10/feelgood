@@ -11,18 +11,18 @@ class OrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: FractionalOffset.topCenter,
-          end: FractionalOffset.bottomCenter,
-          colors: [
-            Colors.black54,
-            Colors.grey,
-            Color(0xFFC8F6C8),
-          ],
-          stops: [0.0, 0.22, 1],
-        ),
-      ),
+//      decoration: BoxDecoration(
+//        gradient: LinearGradient(
+//          begin: FractionalOffset.topCenter,
+//          end: FractionalOffset.bottomCenter,
+//          colors: [
+//            Colors.black54,
+//            Colors.grey,
+//            Color(0xFFC8F6C8),
+//          ],
+//          stops: [0.0, 0.22, 1],
+//        ),
+//      ),
       height: 150,
       child: Card(
         child: Padding(
