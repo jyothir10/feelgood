@@ -159,9 +159,9 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                         ),
                       ),
                       RestaurantTitles(title: "Weekly Offers"),
-                      WofferCard(), //todo:streambuilder for woffer
+
                       RestaurantTitles(title: "Popular Taste"),
-                      PopularCard(), //todo:streambuilder for popular
+
                       Container(
                         height: 150,
                         width: MediaQuery.of(context).size.width,
@@ -174,7 +174,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       RestaurantTitles(
                         title: "Nearby Restaurants",
                       ),
-                      NearResCard(), //todo:streambuilder for nearres
+
                       RestaurantTitles(title: "Popular Cuisines"),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10),
