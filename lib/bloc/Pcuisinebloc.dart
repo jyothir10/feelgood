@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:feelsgood/Models/Type.dart';
 import 'package:feelsgood/Repository/Pcuisine.dart';
 
-class PuisineBloc {
+class PcuisineBloc {
   final _pcuisineListStreamContoller = StreamController<List<Type>>();
 
   Stream<List<Type>> get pcuisineListStream =>
