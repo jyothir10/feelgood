@@ -31,7 +31,7 @@ class _OrderScreenState extends State<OrderScreen> {
       ),
       body: Container(
         height: 650,
-        color: Color(0xFFCBFDCB),
+        color: Colors.white,
         child: StreamBuilder<List<Order>>(
           stream: _orderBloc.orderListStream,
           builder: (BuildContext context, AsyncSnapshot<List<Order>> snapshot) {
