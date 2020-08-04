@@ -76,7 +76,7 @@ class _TajScreenState extends State<TajScreen> {
               ),
             ),
             Container(
-              height: 800,
+              height: 500,
               color: Color(0xFFFD8E8E),
               child: StreamBuilder<List<Taj>>(
                 stream: _tajBloc.tajListStream,

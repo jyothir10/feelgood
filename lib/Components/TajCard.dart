@@ -26,7 +26,13 @@ class TajCard extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: CircleAvatar(
                     radius: 35,
-                    child: CachedNetworkImage(imageUrl: taj.image),
+                    child: ClipOval(
+                        child: CachedNetworkImage(
+                      fit: BoxFit.fill,
+                      height: 70,
+                      width: 70,
+                      imageUrl: taj.image,
+                    )),
                   ),
                 ),
                 Padding(
