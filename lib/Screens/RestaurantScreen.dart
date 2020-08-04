@@ -12,8 +12,8 @@ import 'package:feelsgood/Components/RestaurantTitles.dart';
 import 'package:feelsgood/Components/WofferCard.dart';
 import 'package:feelsgood/Components/PopularCard.dart';
 import 'package:feelsgood/Components/NearResCard.dart';
-import 'package:feelsgood/Components/CuisineCard.dart';
-import 'package:feelsgood/bloc/Cuisinebloc.dart';
+import 'package:feelsgood/Components/PcuisineCard.dart';
+import 'package:feelsgood/bloc/Pcuisinebloc.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
 
 class RestaurantScreen extends StatefulWidget {
@@ -201,7 +201,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                             scrollDirection: Axis.horizontal,
                                             itemCount: snapshot.data.length,
                                             itemBuilder: (context, index) {
-                                              return CuisineCard(
+                                              return PcuisineCard(
                                                 cuisine: snapshot.data[index],
                                               );
                                             })

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:feelsgood/Models/Type.dart';
-import 'package:feelsgood/Repository/Cuisine.dart';
+import 'package:feelsgood/Repository/Pcuisine.dart';
 
 class CuisineBloc {
   final _cuisineListStreamContoller = StreamController<List<Type>>();

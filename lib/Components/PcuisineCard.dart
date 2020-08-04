@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feelsgood/Models/Type.dart';
 
-class CuisineCard extends StatelessWidget {
+class PcuisineCard extends StatelessWidget {
   Type cuisine;
 
-  CuisineCard({this.cuisine});
+  PcuisineCard({this.cuisine});
 
   @override
   Widget build(BuildContext context) {
