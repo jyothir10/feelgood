@@ -167,15 +167,38 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Container(
-                        height: 70,
+                        height: 83,
                         width: 70,
                         decoration: BoxDecoration(
                           border:
-                              Border.all(color: Color(0xFF696969), width: 3),
-                          color: Colors.grey,
+                              Border.all(color: Color(0xFFA9A7A7), width: 3),
+                          color: Color(0xFFCBCBCB),
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(34),
                               topRight: Radius.circular(34)),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            CircleAvatar(
+                              radius: 28,
+                              child: ClipOval(
+                                child: CachedNetworkImage(
+                                  fit: BoxFit.fill,
+                                  height: 56,
+                                  width: 56,
+                                  imageUrl:
+                                      "https://static.toiimg.com/photo/56624568.cms",
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "Indian",
+                              style: TextStyle(
+                                  fontFamily: "Open Sans",
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
                         ),
                       ),
                     ),
