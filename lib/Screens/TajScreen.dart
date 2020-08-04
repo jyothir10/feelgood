@@ -5,7 +5,8 @@ import 'package:feelsgood/Models/Taj.dart';
 import 'package:feelsgood/bloc/Tajbloc.dart';
 import 'package:feelsgood/Components/TajCard.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
-import 'package:feelsgood/Components/NearResCard.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TajScreen extends StatefulWidget {
   static const String id = '/Taj';
@@ -180,6 +181,62 @@ class _TajScreenState extends State<TajScreen> {
                             fontFamily: "Open Sans",
                             fontWeight: FontWeight.w800,
                             fontSize: 20),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 145,
+                    width: 150,
+                    child: Card(
+                      color: Color(0xFFF3F3F3),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            child: CachedNetworkImage(
+                              height: 85,
+                              width: 150,
+                              imageUrl:
+                              "https://i.ytimg.com/vi/Oel8YzFtEdE/maxresdefault.jpg",
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 2),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  "Chicken Kadai",
+                                  style: TextStyle(
+                                      fontSize: 15),
+                                ),
+                                Text("₹240"),
+                                Row(
+                                  children: <Widget>[
+                                    Image.asset(
+                                      "images/heart.png",
+                                      color: Colors.grey,
+                                      height: 14,
+                                      width: 14,
+                                    ),
+                                    Text(
+                                      " 6432",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
