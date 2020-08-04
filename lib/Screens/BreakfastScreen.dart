@@ -29,6 +29,15 @@ class _BreakfastScreenState extends State<BreakfastScreen> {
                   topRight: Radius.circular(41), topLeft: Radius.circular(41)),
             ),
           ),
+          Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return Container();
+            },
+            autoplay: false,
+            itemCount: 3,
+            pagination: SwiperPagination(),
+            control: SwiperControl(),
+          ),
         ],
       ),
     );
