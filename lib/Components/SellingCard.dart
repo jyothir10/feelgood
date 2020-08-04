@@ -3,16 +3,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feelsgood/Models/Selling.dart';
 
 class SellingCard extends StatelessWidget {
-
   Selling selling;
   SellingCard({
     this.selling,
-});
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 145,
+      height: 149,
       width: 150,
       child: Card(
         color: Color(0xFFFFF2F2),
@@ -28,21 +27,19 @@ class SellingCard extends StatelessWidget {
               child: CachedNetworkImage(
                 height: 85,
                 width: 150,
-                imageUrl:
-                selling.image,
+                imageUrl: selling.image,
                 fit: BoxFit.fill,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 2,top: 2),
+              padding: const EdgeInsets.only(left: 2, top: 2),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
                     selling.name,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                   Text(selling.rate),
                   Row(
