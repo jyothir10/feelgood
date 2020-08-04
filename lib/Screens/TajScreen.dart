@@ -5,6 +5,7 @@ import 'package:feelsgood/Models/Taj.dart';
 import 'package:feelsgood/bloc/Tajbloc.dart';
 import 'package:feelsgood/Components/TajCard.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
+import 'package:feelsgood/Components/NearResCard.dart';
 
 class TajScreen extends StatefulWidget {
   static const String id = '/Taj';
