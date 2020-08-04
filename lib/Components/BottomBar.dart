@@ -13,8 +13,8 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      showSelectedLabels: true,
-      showUnselectedLabels: true,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
       currentIndex: currentIndex,
       selectedItemColor: Color(0xFF000000),
       unselectedItemColor: Colors.black87,
