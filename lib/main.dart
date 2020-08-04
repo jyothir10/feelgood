@@ -9,6 +9,8 @@ import 'package:feelsgood/Screens/RestaurantCartScreen.dart';
 import 'Screens/PermissionScreen.dart';
 import 'Screens/OrderScreen.dart';
 import 'Screens/RestaurantScreen.dart';
+import 'package:feelsgood/Screens/TajScreen.dart';
+import 'package:feelsgood/Screens/CuisineScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,6 +31,8 @@ class MyApp extends StatelessWidget {
         PermissionScreen.id: (context) => PermissionScreen(),
         OrderScreen.id: (context) => OrderScreen(),
         RestaurantScreen.id: (context) => RestaurantScreen(),
+        CuisineScreen.id: (context) => CuisineScreen(),
+        TajScreen.id: (context) => TajScreen(),
       },
     );
   }
