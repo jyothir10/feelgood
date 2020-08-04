@@ -24,12 +24,12 @@ class RestaurantScreen extends StatefulWidget {
 
 class _RestaurantScreenState extends State<RestaurantScreen> {
   TypeBloc _typeBloc = TypeBloc();
-  CuisineBloc _cuisineBloc = CuisineBloc();
+  PuisineBloc _puisineBloc = PuisineBloc();
 
   @override
   void dispose() {
     super.dispose();
-    _cuisineBloc.dispose();
+    _puisineBloc.dispose();
     _typeBloc.dispose();
   }
 
@@ -189,7 +189,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                 height: 85,
                                 width: MediaQuery.of(context).size.width,
                                 child: StreamBuilder<List<Type>>(
-                                  stream: _cuisineBloc.cuisineListStream,
+                                  stream: _puisineBloc.pcuisineListStream,
                                   builder: (BuildContext context,
                                       AsyncSnapshot<List<Type>> snapshot) {
                                     if (snapshot.hasError) {

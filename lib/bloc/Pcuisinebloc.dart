@@ -2,19 +2,19 @@ import 'dart:async';
 import 'package:feelsgood/Models/Type.dart';
 import 'package:feelsgood/Repository/Pcuisine.dart';
 
-class CuisineBloc {
-  final _cuisineListStreamContoller = StreamController<List<Type>>();
+class PuisineBloc {
+  final _pcuisineListStreamContoller = StreamController<List<Type>>();
 
-  Stream<List<Type>> get cuisineListStream =>
-      _cuisineListStreamContoller.stream;
-  StreamSink<List<Type>> get cuisineListSink =>
-      _cuisineListStreamContoller.sink;
+  Stream<List<Type>> get pcuisineListStream =>
+      _pcuisineListStreamContoller.stream;
+  StreamSink<List<Type>> get pcuisineListSink =>
+      _pcuisineListStreamContoller.sink;
 
-  CuisineBloc() {
-    _cuisineListStreamContoller.add(cuisinesList);
+  PcuisineBloc() {
+    _pcuisineListStreamContoller.add(cuisinesList);
   }
 
   void dispose() {
-    _cuisineListStreamContoller.close();
+    _pcuisineListStreamContoller.close();
   }
 }
