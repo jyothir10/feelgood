@@ -4,23 +4,22 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feelsgood/Models/Popular.dart';
 
 class PopularCard extends StatelessWidget {
-
   Popular popular;
   PopularCard({
     this.popular,
-});
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 206,
       width: 175,
       child: Stack(
         children: <Widget>[
           Positioned(
             top: 90,
             child: Container(
-              height: 100,
+              height: 106,
               width: 175,
               child: Card(
                 color: Color(0xFFFFD3D3),
@@ -77,7 +76,7 @@ class PopularCard extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
                                 Text(
-                                  popular.price,
+                                  "₹${popular.price}",
                                   style: TextStyle(
                                       fontSize: 19,
                                       fontWeight: FontWeight.bold),
@@ -91,7 +90,7 @@ class PopularCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            popular.resname,
+                            "at ${popular.resname}",
                             style: TextStyle(
                                 fontFamily: "Open Sans",
                                 fontWeight: FontWeight.bold),
@@ -112,8 +111,7 @@ class PopularCard extends StatelessWidget {
                 child: CachedNetworkImage(
                   height: 114,
                   fit: BoxFit.fill,
-                  imageUrl:
-                      popular.image,
+                  imageUrl: popular.image,
                 ),
               ),
             ),
