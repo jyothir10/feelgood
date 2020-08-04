@@ -5,8 +5,9 @@ import 'package:feelsgood/Models/Taj.dart';
 import 'package:feelsgood/bloc/Tajbloc.dart';
 import 'package:feelsgood/Components/TajCard.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:feelsgood/Models/Selling.dart';
+import 'package:feelsgood/bloc/Sellingbloc.dart';
+import 'package:feelsgood/Components/SellingCard.dart';
 
 class TajScreen extends StatefulWidget {
   static const String id = '/Taj';
@@ -16,10 +17,12 @@ class TajScreen extends StatefulWidget {
 
 class _TajScreenState extends State<TajScreen> {
   final TajBloc _tajBloc = TajBloc();
+  final SellingBloc _sellingBloc = SellingBloc();
 
   @override
   void dispose() {
     _tajBloc.dispose();
+    _sellingBloc.dispose();
     super.dispose();
   }
 
@@ -185,59 +188,29 @@ class _TajScreenState extends State<TajScreen> {
                     ),
                   ),
                   Container(
-                    height: 145,
-                    width: 150,
-                    child: Card(
-                      color: Color(0xFFF3F3F3),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            child: CachedNetworkImage(
-                              height: 85,
-                              width: 150,
-                              imageUrl:
-                              "https://i.ytimg.com/vi/Oel8YzFtEdE/maxresdefault.jpg",
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 2),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  "Chicken Kadai",
-                                  style: TextStyle(
-                                      fontSize: 15),
-                                ),
-                                Text("₹240"),
-                                Row(
-                                  children: <Widget>[
-                                    Image.asset(
-                                      "images/heart.png",
-                                      color: Colors.grey,
-                                      height: 14,
-                                      width: 14,
-                                    ),
-                                    Text(
-                                      " 6432",
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                    height: 180,
+                    color: Color(0XFFFFF2F2),
+                    child: StreamBuilder<List<Selling>>(
+                      stream: _sellingBloc.sellingListStream,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<Selling>> snapshot) {
+                        if (snapshot.hasError) {
+                          print(snapshot.error);
+                        }
+                        return snapshot.hasData
+                            ? ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (context, index) {
+                              return SellingCard(
+                                selling: snapshot.data[index],
+                              );
+                            })
+                            : Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
                     ),
                   ),
                   Container(
