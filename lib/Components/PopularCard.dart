@@ -1,16 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
-//todo:model
-/*Model should have
-likes
-image
-name
-price
-restaurant name
- */
+import 'package:feelsgood/Models/Popular.dart';
 
 class PopularCard extends StatelessWidget {
+
+  Popular popular;
+  PopularCard({
+    this.popular,
+});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +43,7 @@ class PopularCard extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 2),
                             child: Text(
-                              "12,432", //todo:likes here
+                              popular.likes,
                               style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 14,
@@ -57,11 +56,11 @@ class PopularCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            "Oreo Cake", //todo:name here
+                            popular.name,
                             style: TextStyle(
-                              fontFamily: "Open Sans-Italic",
+                              fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.bold,
-                              fontSize: 19,
+                              fontSize: 16,
                             ),
                           ),
                           Container(
@@ -78,7 +77,7 @@ class PopularCard extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
                                 Text(
-                                  "₹999", //todo:price here  syntax : "₹{modelname.price}"
+                                  popular.price,
                                   style: TextStyle(
                                       fontSize: 19,
                                       fontWeight: FontWeight.bold),
@@ -92,7 +91,7 @@ class PopularCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "at Cafe Milano", //todo: restaurant name here
+                            popular.resname,
                             style: TextStyle(
                                 fontFamily: "Open Sans",
                                 fontWeight: FontWeight.bold),
@@ -114,7 +113,7 @@ class PopularCard extends StatelessWidget {
                   height: 114,
                   fit: BoxFit.fill,
                   imageUrl:
-                      "https://i.pinimg.com/originals/f9/62/8f/f9628fe466dbde785e709976000fe402.jpg", //todo: image here
+                      popular.image,
                 ),
               ),
             ),

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-//todo:model
-/*Model should have
-name
-image
-rating
-offer
- */
+import 'package:feelsgood/Models/Woffer.dart';
 
 class WofferCard extends StatelessWidget {
+
+  Woffer woffer;
+
+  WofferCard({
+    this.woffer,
+});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +31,7 @@ class WofferCard extends StatelessWidget {
                 height: 85,
                 width: 175,
                 imageUrl:
-                    "https://c.ndtvimg.com/2020-01/hqocblio_restaurant-_625x300_14_January_20.jpg", //todo:image here
+                    woffer.image,
                 fit: BoxFit.fill,
               ),
             ),
@@ -47,7 +47,7 @@ class WofferCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            "Oma Restaurant", //todo:name here
+                            woffer.name,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15),
                           ),
@@ -67,7 +67,7 @@ class WofferCard extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 1),
                             child: Text(
-                              "4.1", //todo:rating here
+                              "4.1",
                               style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 13,
@@ -78,7 +78,7 @@ class WofferCard extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        "50% Offer", //todo:offer here
+                        woffer.offer,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,

@@ -15,6 +15,12 @@ import 'package:feelsgood/Components/NearResCard.dart';
 import 'package:feelsgood/Components/PcuisineCard.dart';
 import 'package:feelsgood/bloc/Pcuisinebloc.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
+import 'package:feelsgood/Models/Woffer.dart';
+import 'package:feelsgood/bloc/Wofferbloc.dart';
+import 'package:feelsgood/Models/Popular.dart';
+import 'package:feelsgood/bloc/PopularBloc.dart';
+import 'package:feelsgood/Models/NearRes.dart';
+import 'package:feelsgood/bloc/NearResbloc.dart';
 
 class RestaurantScreen extends StatefulWidget {
   static const String id = '/restaurant';
@@ -25,12 +31,18 @@ class RestaurantScreen extends StatefulWidget {
 class _RestaurantScreenState extends State<RestaurantScreen> {
   TypeBloc _typeBloc = TypeBloc();
   PuisineBloc _puisineBloc = PuisineBloc();
+  WofferBloc _wofferBloc = WofferBloc();
+  PopularBloc _popularBloc = PopularBloc();
+  NearResBloc _nearResBloc = NearResBloc();
 
   @override
   void dispose() {
     super.dispose();
     _puisineBloc.dispose();
     _typeBloc.dispose();
+    _wofferBloc.dispose();
+    _popularBloc.dispose();
+    _nearResBloc.dispose();
   }
 
   @override
@@ -159,7 +171,58 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                         ),
                       ),
                       RestaurantTitles(title: "Weekly Offers"),
+                      Container(
+                        height: 165,
+
+                        child: StreamBuilder<List<Woffer>>(
+                          stream: _wofferBloc.wofferListStream,
+                          builder:
+                              (BuildContext context, AsyncSnapshot<List<Woffer>> snapshot) {
+                            if (snapshot.hasError) {
+                              print(snapshot.error);
+                            }
+                            return snapshot.hasData
+                                ? ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: snapshot.data.length,
+                                itemBuilder: (context, index) {
+                                  return WofferCard(
+                                    woffer: snapshot.data[index],
+                                  );
+                                })
+                                : Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          },
+                        ),
+                      ),
                       RestaurantTitles(title: "Popular Taste"),
+                      Container(
+                        height: 200,
+                        child: StreamBuilder<List<Popular>>(
+                          stream: _popularBloc.popularListStream,
+                          builder:
+                              (BuildContext context, AsyncSnapshot<List<Popular>> snapshot) {
+                            if (snapshot.hasError) {
+                              print(snapshot.error);
+                            }
+                            return snapshot.hasData
+                                ? ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: snapshot.data.length,
+                                itemBuilder: (context, index) {
+                                  return PopularCard(
+                                    popular: snapshot.data[index],
+                                  );
+                                })
+                                : Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          },
+                        ),
+                      ),
                       Container(
                         height: 150,
                         width: MediaQuery.of(context).size.width,
@@ -171,6 +234,31 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       ),
                       RestaurantTitles(
                         title: "Nearby Restaurants",
+                      ),
+                      Container(
+                        height: 145,
+                        child: StreamBuilder<List<NearRes>>(
+                          stream: _nearResBloc.nearResListStream,
+                          builder:
+                              (BuildContext context, AsyncSnapshot<List<NearRes>> snapshot) {
+                            if (snapshot.hasError) {
+                              print(snapshot.error);
+                            }
+                            return snapshot.hasData
+                                ? ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: snapshot.data.length,
+                                itemBuilder: (context, index) {
+                                  return NearResCard(
+                                    nearRes: snapshot.data[index],
+                                  );
+                                })
+                                : Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          },
+                        ),
                       ),
                       RestaurantTitles(title: "Popular Cuisines"),
                       Padding(

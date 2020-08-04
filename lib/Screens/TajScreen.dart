@@ -1,12 +1,10 @@
 import 'dart:ui';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:feelsgood/Models/Taj.dart';
 import 'package:feelsgood/bloc/Tajbloc.dart';
 import 'package:feelsgood/Components/TajCard.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TajScreen extends StatefulWidget {
   static const String id = '/Taj';
@@ -169,7 +167,7 @@ class _TajScreenState extends State<TajScreen> {
                 children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: Color(0xFFA9A7A7),
                     ),
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
@@ -177,14 +175,16 @@ class _TajScreenState extends State<TajScreen> {
                       child: Text(
                         "Most Selling",
                         style: TextStyle(
-                          color: Colors.black,
-                        ),
+                            color: Colors.black,
+                            fontFamily: "Open Sans",
+                            fontWeight: FontWeight.w800,
+                            fontSize: 20),
                       ),
                     ),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: Color(0xFFA9A7A7),
                     ),
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
@@ -192,10 +192,15 @@ class _TajScreenState extends State<TajScreen> {
                       child: Text(
                         "Stay at Home",
                         style: TextStyle(
-                          color: Colors.black,
-                        ),
+                            color: Colors.black,
+                            fontFamily: "Open Sans",
+                            fontWeight: FontWeight.w800,
+                            fontSize: 20),
                       ),
                     ),
+                  ),
+                  Container(
+                    child: Image(image: AssetImage("images/home.png"),),
                   ),
                   Container(
                     decoration: BoxDecoration(

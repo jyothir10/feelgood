@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
-//todo:model
-/*Model should have
-name
-image
-rating
- */
+import 'package:feelsgood/Models/NearRes.dart';
 
 class NearResCard extends StatelessWidget {
+
+  NearRes nearRes;
+  NearResCard({
+    this.nearRes,
+});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +29,7 @@ class NearResCard extends StatelessWidget {
                 height: 85,
                 width: 175,
                 imageUrl:
-                    "https://c.ndtvimg.com/2020-01/hqocblio_restaurant-_625x300_14_January_20.jpg", //todo:image here
+                    nearRes.image,
                 fit: BoxFit.fill,
               ),
             ),
@@ -46,7 +45,7 @@ class NearResCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            "Oma Restaurant", //todo:name here
+                            nearRes.name,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15),
                           ),
@@ -66,7 +65,7 @@ class NearResCard extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 1),
                             child: Text(
-                              "4.1", //todo:rating here
+                              "4.1",
                               style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 13,
