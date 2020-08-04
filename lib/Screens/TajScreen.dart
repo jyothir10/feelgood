@@ -188,7 +188,7 @@ class _TajScreenState extends State<TajScreen> {
                     ),
                   ),
                   Container(
-                    height: 180,
+                    height: 150,
                     color: Color(0XFFFFF2F2),
                     child: StreamBuilder<List<Selling>>(
                       stream: _sellingBloc.sellingListStream,
