@@ -30,7 +30,7 @@ class RestaurantScreen extends StatefulWidget {
 
 class _RestaurantScreenState extends State<RestaurantScreen> {
   TypeBloc _typeBloc = TypeBloc();
-  PuisineBloc _puisineBloc = PuisineBloc();
+  PcuisineBloc _pcuisineBloc = PcuisineBloc();
   WofferBloc _wofferBloc = WofferBloc();
   PopularBloc _popularBloc = PopularBloc();
   NearResBloc _nearResBloc = NearResBloc();
@@ -38,7 +38,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
   @override
   void dispose() {
     super.dispose();
-    _puisineBloc.dispose();
+    _pcuisineBloc.dispose();
     _typeBloc.dispose();
     _wofferBloc.dispose();
     _popularBloc.dispose();
@@ -173,27 +173,26 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       RestaurantTitles(title: "Weekly Offers"),
                       Container(
                         height: 165,
-
                         child: StreamBuilder<List<Woffer>>(
                           stream: _wofferBloc.wofferListStream,
-                          builder:
-                              (BuildContext context, AsyncSnapshot<List<Woffer>> snapshot) {
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<Woffer>> snapshot) {
                             if (snapshot.hasError) {
                               print(snapshot.error);
                             }
                             return snapshot.hasData
                                 ? ListView.builder(
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: snapshot.data.length,
-                                itemBuilder: (context, index) {
-                                  return WofferCard(
-                                    woffer: snapshot.data[index],
-                                  );
-                                })
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: snapshot.data.length,
+                                    itemBuilder: (context, index) {
+                                      return WofferCard(
+                                        woffer: snapshot.data[index],
+                                      );
+                                    })
                                 : Center(
-                              child: CircularProgressIndicator(),
-                            );
+                                    child: CircularProgressIndicator(),
+                                  );
                           },
                         ),
                       ),
@@ -202,24 +201,24 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                         height: 200,
                         child: StreamBuilder<List<Popular>>(
                           stream: _popularBloc.popularListStream,
-                          builder:
-                              (BuildContext context, AsyncSnapshot<List<Popular>> snapshot) {
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<Popular>> snapshot) {
                             if (snapshot.hasError) {
                               print(snapshot.error);
                             }
                             return snapshot.hasData
                                 ? ListView.builder(
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: snapshot.data.length,
-                                itemBuilder: (context, index) {
-                                  return PopularCard(
-                                    popular: snapshot.data[index],
-                                  );
-                                })
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: snapshot.data.length,
+                                    itemBuilder: (context, index) {
+                                      return PopularCard(
+                                        popular: snapshot.data[index],
+                                      );
+                                    })
                                 : Center(
-                              child: CircularProgressIndicator(),
-                            );
+                                    child: CircularProgressIndicator(),
+                                  );
                           },
                         ),
                       ),
@@ -239,24 +238,24 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                         height: 145,
                         child: StreamBuilder<List<NearRes>>(
                           stream: _nearResBloc.nearResListStream,
-                          builder:
-                              (BuildContext context, AsyncSnapshot<List<NearRes>> snapshot) {
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<NearRes>> snapshot) {
                             if (snapshot.hasError) {
                               print(snapshot.error);
                             }
                             return snapshot.hasData
                                 ? ListView.builder(
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount: snapshot.data.length,
-                                itemBuilder: (context, index) {
-                                  return NearResCard(
-                                    nearRes: snapshot.data[index],
-                                  );
-                                })
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: snapshot.data.length,
+                                    itemBuilder: (context, index) {
+                                      return NearResCard(
+                                        nearRes: snapshot.data[index],
+                                      );
+                                    })
                                 : Center(
-                              child: CircularProgressIndicator(),
-                            );
+                                    child: CircularProgressIndicator(),
+                                  );
                           },
                         ),
                       ),
@@ -274,7 +273,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                 height: 85,
                                 width: MediaQuery.of(context).size.width,
                                 child: StreamBuilder<List<Type>>(
-                                  stream: _puisineBloc.pcuisineListStream,
+                                  stream: _pcuisineBloc.pcuisineListStream,
                                   builder: (BuildContext context,
                                       AsyncSnapshot<List<Type>> snapshot) {
                                     if (snapshot.hasError) {
