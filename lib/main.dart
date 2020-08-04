@@ -11,6 +11,7 @@ import 'Screens/OrderScreen.dart';
 import 'Screens/RestaurantScreen.dart';
 import 'package:feelsgood/Screens/TajScreen.dart';
 import 'package:feelsgood/Screens/CuisineScreen.dart';
+import 'package:feelsgood/Screens/BreakfastScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: TajScreen.id,
+      initialRoute: BreakfastScreen.id,
       routes: {
         SupermarketScreen.id: (context) => SupermarketScreen(),
         HomeScreen.id: (context) => HomeScreen(),
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         RestaurantScreen.id: (context) => RestaurantScreen(),
         CuisineScreen.id: (context) => CuisineScreen(),
         TajScreen.id: (context) => TajScreen(),
+        BreakfastScreen.id: (context) => BreakfastScreen(),
       },
     );
   }
