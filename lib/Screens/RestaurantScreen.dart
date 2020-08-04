@@ -159,9 +159,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                         ),
                       ),
                       RestaurantTitles(title: "Weekly Offers"),
-
                       RestaurantTitles(title: "Popular Taste"),
-
                       Container(
                         height: 150,
                         width: MediaQuery.of(context).size.width,
@@ -174,7 +172,6 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                       RestaurantTitles(
                         title: "Nearby Restaurants",
                       ),
-
                       RestaurantTitles(title: "Popular Cuisines"),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10),
