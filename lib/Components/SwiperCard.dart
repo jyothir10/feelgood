@@ -22,8 +22,7 @@ class SwiperCard extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
       child: Column(
-        children: <Widget>[
-        ],
+        children: <Widget>[],
       ),
     );
   }

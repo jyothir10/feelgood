@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: BreakfastScreen.id,
+      initialRoute: RestaurantScreen.id,
       routes: {
         SupermarketScreen.id: (context) => SupermarketScreen(),
         HomeScreen.id: (context) => HomeScreen(),
