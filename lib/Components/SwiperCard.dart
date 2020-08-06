@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:feelsgood/bloc/Cuisinebloc.dart';
-import 'package:feelsgood/Models/Cuisine.dart';
-import 'package:feelsgood/Components/CuisineCard.dart';
 import 'package:feelsgood/Screens/Swiper.dart';
 
 class SwiperCard extends StatelessWidget {
