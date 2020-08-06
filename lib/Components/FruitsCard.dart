@@ -50,7 +50,7 @@ class FruitsCard extends StatelessWidget {
                       ),
                       Image(
                         height: 90,
-                        image: AssetImage("images/avocado.png"),
+                        image: AssetImage("images/avocado.png"),//TODO:image
                       ),
                     ],
                   ),
@@ -62,7 +62,7 @@ class FruitsCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 7),
           child: Text(
-            "Avocado",
+            "Avocado",//TODO:name
             style: TextStyle(
               fontWeight: FontWeight.w900,
               fontFamily: "Open Sans",
@@ -73,7 +73,7 @@ class FruitsCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 7),
           child: Text(
-            "\$1",
+            "\$1",//TODO: price
             style: TextStyle(
               fontWeight: FontWeight.w900,
               fontFamily: "Open Sans",
