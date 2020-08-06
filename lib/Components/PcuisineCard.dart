@@ -11,23 +11,23 @@ class PcuisineCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 83,
-      width: 70,
+      width: 80,
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFFA9A7A7), width: 3),
         color: Color(0xFFCBCBCB),
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(34), topRight: Radius.circular(34)),
+            topLeft: Radius.circular(37), topRight: Radius.circular(37)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           CircleAvatar(
-            radius: 28,
+            radius: 32,
             child: ClipOval(
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
-                height: 56,
-                width: 56,
+                height: 64,
+                width: 64,
                 imageUrl: cuisine.image,
               ),
             ),

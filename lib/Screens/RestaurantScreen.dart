@@ -270,7 +270,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               Container(
-                                height: 85,
+                                height: 90,
                                 width: MediaQuery.of(context).size.width,
                                 child: StreamBuilder<List<Type>>(
                                   stream: _pcuisineBloc.pcuisineListStream,

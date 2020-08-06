@@ -14,5 +14,5 @@ List<Type> cuisinesList = [
   Type("Thai",
       "https://www.thespruceeats.com/thmb/5oL7uPqCjsZQw0yd2i_KkK9r-kw=/450x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1042998066-518ca1d7f2804eb09039e9e42e91667c.jpg"),
   Type("Fusion",
-      "https://nrai.org/wp-content/uploads/2018/06/Spaghetti-Tacos-561x400.png"),
+      "https://miro.medium.com/max/866/1*P9zQx_NplRbXp4yRyyDsaA.jpeg"),
 ];

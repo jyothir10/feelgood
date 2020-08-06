@@ -69,7 +69,7 @@ class _CuisineScreenState extends State<CuisineScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                    height: 85,
+                    height: 90,
                     width: MediaQuery.of(context).size.width,
                     child: StreamBuilder<List<Type>>(
                       stream: _pcuisineBloc.pcuisineListStream,
@@ -97,32 +97,34 @@ class _CuisineScreenState extends State<CuisineScreen> {
                 ],
               ),
             ),
-            Container(
-              height: 700,
-              color: Color(0xFFEFCDB1),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: StreamBuilder<List<Cuisine>>(
-                  stream: _cuisineBloc.cuisineListStream,
-                  builder: (BuildContext context,
-                      AsyncSnapshot<List<Cuisine>> snapshot) {
-                    if (snapshot.hasError) {
-                      print(snapshot.error);
-                    }
-                    return snapshot.hasData
-                        ? ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: snapshot.data.length,
-                            itemBuilder: (context, index) {
-                              return CuisineCard(
-                                cuisine: snapshot.data[index],
-                              );
-                            })
-                        : Center(
-                            child: CircularProgressIndicator(),
-                          );
-                  },
+            SingleChildScrollView(
+              child: Container(
+                height: 500,
+                color: Color(0xFFEFCDB1),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: StreamBuilder<List<Cuisine>>(
+                    stream: _cuisineBloc.cuisineListStream,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<Cuisine>> snapshot) {
+                      if (snapshot.hasError) {
+                        print(snapshot.error);
+                      }
+                      return snapshot.hasData
+                          ? ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                return CuisineCard(
+                                  cuisine: snapshot.data[index],
+                                );
+                              })
+                          : Center(
+                              child: CircularProgressIndicator(),
+                            );
+                    },
+                  ),
                 ),
               ),
             ),
