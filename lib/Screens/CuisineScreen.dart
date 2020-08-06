@@ -99,7 +99,7 @@ class _CuisineScreenState extends State<CuisineScreen> {
             ),
             SingleChildScrollView(
               child: Container(
-                height: 500,
+                height: MediaQuery.of(context).size.height - 210,
                 color: Color(0xFFEFCDB1),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 8),
