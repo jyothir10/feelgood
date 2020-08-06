@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:feelsgood/Models/Fruits.dart';
 
 class FruitsCard extends StatelessWidget {
+  Fruit fruit;
+  Function isPressed;
+
+  FruitsCard({this.isPressed, this.fruit});
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          height: 155,
+          height: 150,
           width: 140,
           child: Card(
             shape:
@@ -36,13 +41,20 @@ class FruitsCard extends StatelessWidget {
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.only(top: 4, right: 4),
-                            child: CircleAvatar(
-                              radius: 14,
-                              backgroundColor: Colors.white,
-                              child: Icon(
-                                FontAwesomeIcons.heart,
-                                color: Colors.black,
-                                size: 14,
+                            child: GestureDetector(
+                              onTap: isPressed,
+                              child: CircleAvatar(
+                                radius: 14,
+                                backgroundColor: fruit.isPressed == true
+                                    ? Colors.red
+                                    : Colors.white,
+                                child: Icon(
+                                  FontAwesomeIcons.heart,
+                                  color: fruit.isPressed != true
+                                      ? Colors.black
+                                      : Colors.white,
+                                  size: 14,
+                                ),
                               ),
                             ),
                           ),
@@ -50,7 +62,7 @@ class FruitsCard extends StatelessWidget {
                       ),
                       Image(
                         height: 90,
-                        image: AssetImage("images/avocado.png"), //TODO:image
+                        image: AssetImage(fruit.image),
                       ),
                     ],
                   ),
@@ -62,7 +74,7 @@ class FruitsCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 7),
           child: Text(
-            "Avocado", //TODO:name
+            fruit.name,
             style: TextStyle(
               fontWeight: FontWeight.w900,
               fontFamily: "Open Sans",
@@ -73,7 +85,7 @@ class FruitsCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 7),
           child: Text(
-            "\$1", //TODO: price
+            "\$1",
             style: TextStyle(
               fontWeight: FontWeight.w900,
               fontFamily: "Open Sans",
