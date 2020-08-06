@@ -17,6 +17,27 @@ class _BreakfastScreenState extends State<BreakfastScreen> {
       appBar: AppBar(
         backgroundColor: Color(0xFF87ceeb),
         elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: <Widget>[
+              Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              ),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Icon(
+              Icons.search,
+              color: Colors.black,
+              size: 30,
+            ),
+          ),
+        ],
       ),
       body: Stack(
         children: <Widget>[
@@ -32,6 +53,13 @@ class _BreakfastScreenState extends State<BreakfastScreen> {
                   topRight: Radius.circular(41), topLeft: Radius.circular(41)),
             ),
           ),
+          Positioned(
+              left: MediaQuery.of(context).size.width / 2 - 90,
+              child: Image.asset(
+                "images/plate1.jpg",
+                height: 150,
+                width: 180,
+              )),
           Positioned(
             top: 85,
             child: Container(

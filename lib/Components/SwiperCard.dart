@@ -15,10 +15,11 @@ class SwiperCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (index == 0) {
-      color = Color(0xFF96CA6D);
+      color = Color(0xFF87ceeb);
       text = "BreakFast";
     } else if (index == 1) {
-      color = Color(0xFF87ceeb);
+      color = Color(0xFF96CA6D);
+
       text = "Lunch";
     } else if (index == 2) {
       color = Color(0xFFFFD782);
@@ -39,7 +40,7 @@ class SwiperCard extends StatelessWidget {
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w800,
-                  fontSize: 30),
+                  fontSize: 35),
             ),
           ),
           Padding(
