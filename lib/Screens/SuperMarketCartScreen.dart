@@ -37,7 +37,6 @@ class _SuperMarketCartScreenState extends State<SuperMarketCartScreen> {
               child: SingleChildScrollView(
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
                   decoration: BoxDecoration(
                     color: Color(0xFF6AAF6A),
                     borderRadius: BorderRadius.only(
@@ -111,7 +110,7 @@ class _SuperMarketCartScreenState extends State<SuperMarketCartScreen> {
                       Column(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.only(top: 48),
+                            padding: const EdgeInsets.only(top: 30),
                             child: Container(
                               width: MediaQuery.of(context).size.width,
                               color: Colors.white,
@@ -143,7 +142,7 @@ class _SuperMarketCartScreenState extends State<SuperMarketCartScreen> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 12, left: 8),
+                            padding: const EdgeInsets.only(top: 11, left: 8),
                             child: Row(
                               children: <Widget>[
                                 Text(

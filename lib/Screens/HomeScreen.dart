@@ -16,6 +16,7 @@ import 'package:feelsgood/Components/BottomBar.dart';
 import 'package:feelsgood/Components/TrendingCard.dart';
 import 'package:feelsgood/Models/Trending.dart';
 import 'package:feelsgood/bloc/Trendingbloc.dart';
+import 'package:feelsgood/Screens/SupermarketScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = '/home';
@@ -86,18 +87,34 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: const EdgeInsets.only(left: 20),
                             child: Container(
                               width: 85,
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Row(
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.location_on,
-                                      color: Colors.brown,
+                              child: GestureDetector(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20),
+                                      ),
                                     ),
-                                    Text("Kannur")
-                                  ],
+                                    context: context,
+                                    builder: (BuildContext bc) {
+                                      return BottomSheet();
+                                    },
+                                  );
+                                },
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.location_on,
+                                        color: Colors.brown,
+                                      ),
+                                      Text("Kannur")
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -174,6 +191,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemBuilder: (context, index) {
                               return TopMarketCard(
                                 topMarket: snapshot.data[index],
+                                onPress: () {
+                                  Navigator.pushNamed(
+                                      context, SupermarketScreen.id);
+                                },
                               );
                             })
                         : Center(
@@ -215,6 +236,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemBuilder: (context, index) {
                             return NearMarketCard(
                               nearMarket: snapshot.data[index],
+                              onPress: () {
+                                Navigator.pushNamed(
+                                    context, SupermarketScreen.id);
+                              },
                             );
                           })
                       : Center(
@@ -273,6 +298,38 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class BottomSheet extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0xFFCBCBCB),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      height: 300,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
+        child: Container(
+          height: 38,
+          width: MediaQuery.of(context).size.width - 40,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: TextField(
+              enableSuggestions: true,
+              decoration: kSearchBarDecoration.copyWith(
+                  hintText: "Type a Pincode",
+                  hintStyle: TextStyle(color: Colors.black38, fontSize: 15)),
+            ),
+          ),
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:feelsgood/Screens/SuperMarketCartScreen.dart';
 
 int currentIndex = 0;
 
@@ -61,7 +62,11 @@ class _BottomBarState extends State<BottomBar> {
         ),
       ],
       onTap: (index) {
-        setState(() {});
+        setState(() {
+          if (index == 2) {
+            Navigator.pushNamed(context, SuperMarketCartScreen.id);
+          }
+        });
       },
     );
   }

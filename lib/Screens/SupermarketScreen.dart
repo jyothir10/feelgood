@@ -17,6 +17,7 @@ import 'package:feelsgood/Styling/Constants.dart';
 import 'package:feelsgood/Models/Search.dart';
 import 'package:feelsgood/bloc/Searchbloc.dart';
 import 'package:feelsgood/Components/SearchCard.dart';
+import 'package:feelsgood/Screens/FruitScreen.dart';
 
 class SupermarketScreen extends StatefulWidget {
   static const String id = '/supermarket';
@@ -37,7 +38,11 @@ class _SupermarketScreenState extends State<SupermarketScreen> {
       bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         backgroundColor: Color(0xFF16540D),
-        leading: Icon(Icons.arrow_back),
+        leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(Icons.arrow_back)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -234,6 +239,9 @@ class _SupermarketScreenState extends State<SupermarketScreen> {
                             itemBuilder: (context, index) {
                               return CategoriesCard(
                                 category: snapshot.data[index],
+                                onPress: () {
+                                  Navigator.pushNamed(context, FruitScreen.id);
+                                },
                               );
                             })
                         : Center(

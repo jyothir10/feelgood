@@ -18,7 +18,11 @@ class _FruitScreenState extends State<FruitScreen> {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: Color(0xFF16540D),
-            leading: Icon(Icons.arrow_back_ios),
+            leading: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back_ios)),
           ),
           body: Stack(
             children: <Widget>[

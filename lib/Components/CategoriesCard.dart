@@ -4,10 +4,12 @@ import 'package:feelsgood/Models/Category.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class CategoriesCard extends StatelessWidget {
-  Category category;
+  final Category category;
+  final Function onPress;
 
   CategoriesCard({
     this.category,
+    this.onPress,
   });
 
   @override
@@ -18,14 +20,17 @@ class CategoriesCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Card(
-              color: Color(category.color),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Image(
-                  height: 40,
-                  width: 40,
-                  image: AssetImage(category.image),
+            GestureDetector(
+              onTap: onPress,
+              child: Card(
+                color: Color(category.color),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image(
+                    height: 40,
+                    width: 40,
+                    image: AssetImage(category.image),
+                  ),
                 ),
               ),
             ),
