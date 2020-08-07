@@ -38,6 +38,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
   PopularBloc _popularBloc = PopularBloc();
   NearResBloc _nearResBloc = NearResBloc();
 
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void dispose() {
     super.dispose();
@@ -51,7 +53,11 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
+      key: scaffoldKey,
+      bottomNavigationBar: BottomBar(
+        scaffoldkey: scaffoldKey,
+      ),
+      endDrawer: Drawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

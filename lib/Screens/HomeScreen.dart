@@ -17,6 +17,7 @@ import 'package:feelsgood/Components/TrendingCard.dart';
 import 'package:feelsgood/Models/Trending.dart';
 import 'package:feelsgood/bloc/Trendingbloc.dart';
 import 'package:feelsgood/Screens/SupermarketScreen.dart';
+import 'package:feelsgood/Components/Drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = '/home';
@@ -29,10 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
   final NearMarketBloc _nearMarketBloc = NearMarketBloc();
   final TrendingBloc _trendingBloc = TrendingBloc();
 
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
+      key: scaffoldKey,
+      bottomNavigationBar: BottomBar(
+        scaffoldkey: scaffoldKey,
+      ),
+      endDrawer: DrawerCard(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
