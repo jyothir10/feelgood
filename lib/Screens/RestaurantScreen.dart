@@ -21,6 +21,9 @@ import 'package:feelsgood/Models/Popular.dart';
 import 'package:feelsgood/bloc/PopularBloc.dart';
 import 'package:feelsgood/Models/NearRes.dart';
 import 'package:feelsgood/bloc/NearResbloc.dart';
+import 'package:feelsgood/Screens/BreakfastScreen.dart';
+import 'package:feelsgood/Screens/TajScreen.dart';
+import 'package:feelsgood/Screens/CuisineScreen.dart';
 
 class RestaurantScreen extends StatefulWidget {
   static const String id = '/restaurant';
@@ -160,6 +163,10 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                         itemBuilder: (context, index) {
                                           return TypeCard(
                                             type: snapshot.data[index],
+                                            onPress: () {
+                                              Navigator.pushNamed(
+                                                  context, BreakfastScreen.id);
+                                            },
                                           );
                                         })
                                     : Center(
@@ -251,6 +258,10 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                     itemBuilder: (context, index) {
                                       return NearResCard(
                                         nearRes: snapshot.data[index],
+                                        onPress: () {
+                                          Navigator.pushNamed(
+                                              context, TajScreen.id);
+                                        },
                                       );
                                     })
                                 : Center(
@@ -287,6 +298,10 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                             itemBuilder: (context, index) {
                                               return PcuisineCard(
                                                 cuisine: snapshot.data[index],
+                                                onPress: () {
+                                                  Navigator.pushNamed(context,
+                                                      CuisineScreen.id);
+                                                },
                                               );
                                             })
                                         : Center(

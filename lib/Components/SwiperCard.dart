@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:feelsgood/Screens/Swiper.dart';
+import 'package:feelsgood/Screens/SwiperScreen.dart';
 
 class SwiperCard extends StatelessWidget {
   int index;

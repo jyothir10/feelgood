@@ -5,10 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:feelsgood/Models/Taj.dart';
 
 class TajCard extends StatelessWidget {
-  Taj taj;
+  final Taj taj;
+  final Function onPress;
 
   TajCard({
     this.taj,
+    this.onPress,
   });
 
   @override
@@ -91,20 +93,23 @@ class TajCard extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: Card(
-                    color: Color(0xFF8A0202),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 3, horizontal: 5),
-                      child: Text(
-                        "ADD TO CART",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontFamily: "Open Sans-Bold"),
+                  child: GestureDetector(
+                    onTap: onPress,
+                    child: Card(
+                      color: Color(0xFF8A0202),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 3, horizontal: 5),
+                        child: Text(
+                          "ADD TO CART",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontFamily: "Open Sans-Bold"),
+                        ),
                       ),
                     ),
                   ),

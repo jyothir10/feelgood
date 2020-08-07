@@ -8,6 +8,7 @@ import 'package:feelsgood/Components/BottomBar.dart';
 import 'package:feelsgood/Models/Selling.dart';
 import 'package:feelsgood/bloc/Sellingbloc.dart';
 import 'package:feelsgood/Components/SellingCard.dart';
+import 'package:feelsgood/Screens/RestaurantCartScreen.dart';
 
 class TajScreen extends StatefulWidget {
   static const String id = '/Taj';
@@ -55,10 +56,15 @@ class _TajScreenState extends State<TajScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                Icon(
-                                  Icons.keyboard_arrow_left,
-                                  color: Colors.black,
-                                  size: 35,
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Icon(
+                                    Icons.keyboard_arrow_left,
+                                    color: Colors.black,
+                                    size: 35,
+                                  ),
                                 ),
                               ],
                             ),
@@ -199,17 +205,17 @@ class _TajScreenState extends State<TajScreen> {
                         }
                         return snapshot.hasData
                             ? ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: snapshot.data.length,
-                            itemBuilder: (context, index) {
-                              return SellingCard(
-                                selling: snapshot.data[index],
-                              );
-                            })
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: snapshot.data.length,
+                                itemBuilder: (context, index) {
+                                  return SellingCard(
+                                    selling: snapshot.data[index],
+                                  );
+                                })
                             : Center(
-                          child: CircularProgressIndicator(),
-                        );
+                                child: CircularProgressIndicator(),
+                              );
                       },
                     ),
                   ),
@@ -231,7 +237,9 @@ class _TajScreenState extends State<TajScreen> {
                     ),
                   ),
                   Container(
-                    child: Image(image: AssetImage("images/home.png"),),
+                    child: Image(
+                      image: AssetImage("images/home.png"),
+                    ),
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -268,6 +276,10 @@ class _TajScreenState extends State<TajScreen> {
                                 itemBuilder: (context, index) {
                                   return TajCard(
                                     taj: snapshot.data[index],
+                                    onPress: () {
+                                      Navigator.pushNamed(
+                                          context, RestaurantCartScreen.id);
+                                    },
                                   );
                                 })
                             : Center(

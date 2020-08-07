@@ -4,10 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:feelsgood/Models/Cuisine.dart';
 
 class CuisineCard extends StatelessWidget {
-  Cuisine cuisine;
+  final Cuisine cuisine;
+  final Function onPress;
 
   CuisineCard({
     this.cuisine,
+    this.onPress,
   });
 
   @override

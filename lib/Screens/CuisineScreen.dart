@@ -6,6 +6,7 @@ import 'package:feelsgood/bloc/Pcuisinebloc.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
 import 'package:feelsgood/Models/Type.dart';
 import 'package:feelsgood/Components/PcuisineCard.dart';
+import 'package:feelsgood/Screens/TajScreen.dart';
 
 class CuisineScreen extends StatefulWidget {
   static const String id = '/Cuisine';
@@ -42,9 +43,14 @@ class _CuisineScreenState extends State<CuisineScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: <Widget>[
-              Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.white,
+                ),
               ),
             ],
           ),
@@ -118,6 +124,9 @@ class _CuisineScreenState extends State<CuisineScreen> {
                               itemBuilder: (context, index) {
                                 return CuisineCard(
                                   cuisine: snapshot.data[index],
+                                  onPress: () {
+                                    Navigator.pushNamed(context, TajScreen.id);
+                                  },
                                 );
                               })
                           : Center(

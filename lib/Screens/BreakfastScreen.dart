@@ -21,9 +21,14 @@ class _BreakfastScreenState extends State<BreakfastScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: <Widget>[
-              Icon(
-                Icons.arrow_back_ios,
-                color: Colors.black,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.black,
+                ),
               ),
             ],
           ),

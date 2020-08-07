@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:feelsgood/bloc/Cuisinebloc.dart';
 import 'package:feelsgood/Models/Cuisine.dart';
 import 'package:feelsgood/Components/CuisineCard.dart';
+import 'package:feelsgood/Screens/TajScreen.dart';
 
 class SwiperScreen extends StatefulWidget {
   @override
@@ -34,6 +35,11 @@ class _SwiperScreenState extends State<SwiperScreen> {
                   itemBuilder: (context, index) {
                     return CuisineCard(
                       cuisine: snapshot.data[index],
+                      onPress: () {
+                        setState(() {
+                          Navigator.pushNamed(context, TajScreen.id);
+                        });
+                      },
                     );
                   })
               : Center(

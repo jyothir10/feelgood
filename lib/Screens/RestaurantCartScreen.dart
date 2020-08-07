@@ -23,9 +23,14 @@ class _RestaurantCartScreenState extends State<RestaurantCartScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: Colors.black,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
         ),
       ),
       body: SingleChildScrollView(
