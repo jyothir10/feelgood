@@ -130,77 +130,79 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 200,
-                child: Stack(
-                  children: <Widget>[
-                    Positioned(
-                      left: 64,
-                      child: Hero(
-                        tag: "grass",
-                        child: Image.asset(
-                          "images/grass.png",
-                          height: 210,
-                          width: 270,
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 200,
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        left: 64,
+                        child: Hero(
+                          tag: "grass",
+                          child: Image.asset(
+                            "images/grass.png",
+                            height: 210,
+                            width: 270,
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      child: Hero(
-                        tag: "scooter",
-                        child: Image.asset(
-                          "images/scooter1.png",
-                          height: 170,
-                          width: 100,
+                      Positioned(
+                        child: Hero(
+                          tag: "scooter",
+                          child: Image.asset(
+                            "images/scooter1.png",
+                            height: 170,
+                            width: 100,
+                          ),
                         ),
+                        top: 70,
+                        left: 0,
                       ),
-                      top: 70,
-                      left: 0,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: SizedBox(
-                            height: 30,
-                            width: 160,
-                            child: Hero(
-                              tag: "button",
-                              child: RaisedButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18),
-                                ),
-                                color: Color(0xFFD19139),
-                                onPressed: () {
-                                  setState(() {
-                                    Navigator.pushNamed(
-                                        context, LoginScreen.id);
-                                  });
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 18, vertical: 0),
-                                  child: Text(
-                                    "Sign Up",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'Open Sans',
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 18),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: SizedBox(
+                              height: 30,
+                              width: 160,
+                              child: Hero(
+                                tag: "button",
+                                child: RaisedButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18),
+                                  ),
+                                  color: Color(0xFFD19139),
+                                  onPressed: () {
+                                    setState(() {
+                                      Navigator.pushNamed(
+                                          context, LoginScreen.id);
+                                    });
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 18, vertical: 0),
+                                    child: Text(
+                                      "Sign Up",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'Open Sans',
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 18),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                  fit: StackFit.loose,
+                        ],
+                      ),
+                    ],
+                    fit: StackFit.loose,
+                  ),
                 ),
               ),
             ),

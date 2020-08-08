@@ -30,6 +30,11 @@ class _CuisineScreenState extends State<CuisineScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+      bottomNavigationBar: BottomBar(
+        scaffoldkey: scaffoldKey,
+      ),
+      endDrawer: DrawerCard(),
       appBar: AppBar(
         backgroundColor: Color(0xFF9D0707),
         elevation: 0,
@@ -64,10 +69,6 @@ class _CuisineScreenState extends State<CuisineScreen> {
             size: 30,
           ),
         ],
-      ),
-      key: scaffoldKey,
-      bottomNavigationBar: BottomBar(
-        scaffoldkey: scaffoldKey,
       ),
       body: SingleChildScrollView(
         child: Column(
