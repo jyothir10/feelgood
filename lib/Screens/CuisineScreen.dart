@@ -7,6 +7,7 @@ import 'package:feelsgood/Components/BottomBar.dart';
 import 'package:feelsgood/Models/Type.dart';
 import 'package:feelsgood/Components/PcuisineCard.dart';
 import 'package:feelsgood/Screens/TajScreen.dart';
+import 'package:feelsgood/Components/Drawer.dart';
 
 class CuisineScreen extends StatefulWidget {
   static const String id = '/Cuisine';
@@ -17,6 +18,7 @@ class CuisineScreen extends StatefulWidget {
 class _CuisineScreenState extends State<CuisineScreen> {
   final CuisineBloc _cuisineBloc = CuisineBloc();
   final PcuisineBloc _pcuisineBloc = PcuisineBloc();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void dispose() {
@@ -63,7 +65,10 @@ class _CuisineScreenState extends State<CuisineScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomBar(),
+      key: scaffoldKey,
+      bottomNavigationBar: BottomBar(
+        scaffoldkey: scaffoldKey,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

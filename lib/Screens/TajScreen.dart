@@ -9,6 +9,7 @@ import 'package:feelsgood/Models/Selling.dart';
 import 'package:feelsgood/bloc/Sellingbloc.dart';
 import 'package:feelsgood/Components/SellingCard.dart';
 import 'package:feelsgood/Screens/RestaurantCartScreen.dart';
+import 'package:feelsgood/Components/Drawer.dart';
 
 class TajScreen extends StatefulWidget {
   static const String id = '/Taj';
@@ -19,6 +20,7 @@ class TajScreen extends StatefulWidget {
 class _TajScreenState extends State<TajScreen> {
   final TajBloc _tajBloc = TajBloc();
   final SellingBloc _sellingBloc = SellingBloc();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void dispose() {
@@ -33,7 +35,11 @@ class _TajScreenState extends State<TajScreen> {
       initialIndex: 1,
       length: 3,
       child: Scaffold(
-        bottomNavigationBar: BottomBar(),
+        key: scaffoldKey,
+        bottomNavigationBar: BottomBar(
+          scaffoldkey: scaffoldKey,
+        ),
+        endDrawer: DrawerCard(),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[

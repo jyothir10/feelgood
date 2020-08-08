@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
 import 'package:feelsgood/Components/SwiperCard.dart';
+import 'package:feelsgood/Components/Drawer.dart';
 
 class BreakfastScreen extends StatefulWidget {
   static const String id = '/Breakfast';
@@ -10,10 +11,14 @@ class BreakfastScreen extends StatefulWidget {
 }
 
 class _BreakfastScreenState extends State<BreakfastScreen> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
+      key: scaffoldKey,
+      bottomNavigationBar: BottomBar(
+        scaffoldkey: scaffoldKey,
+      ),
       appBar: AppBar(
         backgroundColor: Color(0xFF87ceeb),
         elevation: 0,

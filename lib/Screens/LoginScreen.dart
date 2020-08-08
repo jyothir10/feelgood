@@ -6,6 +6,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:feelsgood/Styling/Constants.dart';
 import 'package:feelsgood/Screens/SignUpScreen.dart';
+import 'package:feelsgood/Screens/HomeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = '/login';
@@ -154,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen>
                                 borderRadius: BorderRadius.circular(18),
                               ),
                               color: Color(0xFFD19139),
-                              onPressed: () {
+                              onPressed: () async {
                                 controller = AnimationController(
                                   duration: Duration(seconds: 3),
                                   vsync: this,
@@ -167,6 +168,8 @@ class _LoginScreenState extends State<LoginScreen>
                                     });
                                   },
                                 );
+                                await Future.delayed(Duration(seconds: 3));
+                                Navigator.pushNamed(context, HomeScreen.id);
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
