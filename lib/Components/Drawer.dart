@@ -4,6 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:feelsgood/Screens/HomeScreen.dart';
 import 'package:feelsgood/Screens/RestaurantScreen.dart';
 import 'package:feelsgood/Components/ChangeCard.dart';
+import 'package:feelsgood/Components/DrawerTab.dart';
+import 'package:feelsgood/Screens/AccountScreen.dart';
+import 'package:feelsgood/Screens/OrderScreen.dart';
 
 class DrawerCard extends StatelessWidget {
   @override
@@ -23,10 +26,15 @@ class DrawerCard extends StatelessWidget {
                     height: 150,
                     width: 230,
                   ),
-                  Icon(
-                    Icons.close,
-                    color: Colors.white,
-                    size: 25,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.close,
+                      color: Colors.white,
+                      size: 25,
+                    ),
                   )
                 ],
               ),
@@ -159,7 +167,7 @@ class DrawerCard extends StatelessWidget {
               ),
             ),
             Container(
-              height: 100,
+              height: 96,
               width: MediaQuery.of(context).size.width,
               color: Color(0xFFACB6B9),
               child: Column(
@@ -182,6 +190,30 @@ class DrawerCard extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Column(
+              children: <Widget>[
+                DrawerTab(
+                  text: "My Account",
+                  image: "images/user.png",
+                  onPressed: () {
+                    Navigator.pushNamed(context, AccountScreen.id);
+                  },
+                ),
+                DrawerTab(text: "Edit Profile", image: "images/edit.png"),
+                DrawerTab(text: "Home", image: "images/house.png"),
+                DrawerTab(text: "My Wishlist", image: "images/wishlist.png"),
+                DrawerTab(
+                  text: "My Orders",
+                  image: "images/shopping-bag.png",
+                  onPressed: () {
+                    Navigator.pushNamed(context, OrderScreen.id);
+                  },
+                ),
+                DrawerTab(text: "Offers", image: "images/sale.png"),
+                DrawerTab(text: "Coupons", image: "images/coupon.png"),
+                DrawerTab(text: "About Us", image: "images/info.png"),
+              ],
             )
           ],
         ),

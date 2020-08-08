@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:feelsgood/Components/BottomBar.dart';
 import 'package:feelsgood/Styling/Constants.dart';
 import 'package:feelsgood/Components/AccountButton.dart';
+import 'package:feelsgood/Components/Drawer.dart';
 
 class AccountScreen extends StatefulWidget {
   static const String id = '/account';
@@ -10,20 +11,24 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
+      key: scaffoldKey,
+      endDrawer: DrawerCard(),
+      bottomNavigationBar: BottomBar(
+        scaffoldkey: scaffoldKey,
+      ),
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Center(
-          child: Text(
-            "My Account",
-            style: TextStyle(
-                color: Colors.black,
-                fontFamily: "Open Sans",
-                fontWeight: FontWeight.bold),
-          ),
+        centerTitle: true,
+        title: Text(
+          "My Account",
+          style: TextStyle(
+              color: Colors.black,
+              fontFamily: "Open Sans",
+              fontWeight: FontWeight.bold),
         ),
       ),
       body: Container(

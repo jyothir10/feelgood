@@ -18,6 +18,7 @@ import 'package:feelsgood/Models/Search.dart';
 import 'package:feelsgood/bloc/Searchbloc.dart';
 import 'package:feelsgood/Components/SearchCard.dart';
 import 'package:feelsgood/Screens/FruitScreen.dart';
+import 'package:feelsgood/Components/Drawer.dart';
 
 class SupermarketScreen extends StatefulWidget {
   static const String id = '/supermarket';
@@ -31,11 +32,16 @@ class _SupermarketScreenState extends State<SupermarketScreen> {
   final ItemBloc _itemBloc = ItemBloc();
   final OfferBloc _offerBloc = OfferBloc();
   final SearchBloc _searchBloc = SearchBloc();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
+      key: scaffoldKey,
+      bottomNavigationBar: BottomBar(
+        scaffoldkey: scaffoldKey,
+      ),
+      endDrawer: DrawerCard(),
       appBar: AppBar(
         backgroundColor: Color(0xFF16540D),
         leading: GestureDetector(

@@ -24,6 +24,7 @@ import 'package:feelsgood/bloc/NearResbloc.dart';
 import 'package:feelsgood/Screens/BreakfastScreen.dart';
 import 'package:feelsgood/Screens/TajScreen.dart';
 import 'package:feelsgood/Screens/CuisineScreen.dart';
+import 'package:feelsgood/Components/Drawer.dart';
 
 class RestaurantScreen extends StatefulWidget {
   static const String id = '/restaurant';
@@ -57,7 +58,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
       bottomNavigationBar: BottomBar(
         scaffoldkey: scaffoldKey,
       ),
-      endDrawer: Drawer(),
+      endDrawer: DrawerCard(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

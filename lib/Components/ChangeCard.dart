@@ -14,7 +14,7 @@ class ChangeCard extends StatelessWidget {
       width: 152,
       child: RaisedButton(
         onPressed: onPressed,
-        elevation: 20,
+        elevation: 40,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

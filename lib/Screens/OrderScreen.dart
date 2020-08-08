@@ -18,10 +18,15 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.keyboard_arrow_left,
-          color: Colors.white,
-          size: 28,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context);
+          },
+          child: Icon(
+            Icons.keyboard_arrow_left,
+            color: Colors.white,
+            size: 28,
+          ),
         ),
         backgroundColor: kScreenColor,
         title: Text(
