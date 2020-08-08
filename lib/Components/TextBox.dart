@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class TextBox extends StatelessWidget {
   final String hintText;
-  TextBox({@required this.hintText});
+  final bool obscuretext;
+  TextBox({@required this.hintText, this.obscuretext});
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +12,7 @@ class TextBox extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width / 1.2,
         child: TextField(
+          obscureText: obscuretext != null ? obscuretext : false,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             border: OutlineInputBorder(

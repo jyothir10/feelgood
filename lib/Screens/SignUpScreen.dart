@@ -64,7 +64,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         tag: "password",
                         child: FlatButton(
                           child: FlatButton(
-                            child: TextBox(hintText: "Password"),
+                            child: TextBox(
+                              hintText: "Password",
+                              obscuretext: true,
+                            ),
                           ),
                         ),
                       ),

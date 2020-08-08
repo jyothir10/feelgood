@@ -20,7 +20,7 @@ class _OrderScreenState extends State<OrderScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () {
-            Navigator.of(context);
+            Navigator.pop(context);
           },
           child: Icon(
             Icons.keyboard_arrow_left,

@@ -82,7 +82,10 @@ class _LoginScreenState extends State<LoginScreen>
                       Hero(
                         tag: "password",
                         child: FlatButton(
-                          child: TextBox(hintText: "Password"),
+                          child: TextBox(
+                            hintText: "Password",
+                            obscuretext: true,
+                          ),
                         ),
                       ),
                       Row(
@@ -193,69 +196,71 @@ class _LoginScreenState extends State<LoginScreen>
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 200,
-                child: Stack(
-                  children: <Widget>[
-                    Positioned(
-                      left: 64,
-                      child: Hero(
-                        tag: "grass",
-                        child: Image.asset(
-                          "images/grass.png",
-                          height: 210,
-                          width: 270,
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 200,
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        left: 64,
+                        child: Hero(
+                          tag: "grass",
+                          child: Image.asset(
+                            "images/grass.png",
+                            height: 210,
+                            width: 270,
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      child: Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: value * 500,
-                          ),
-                          Hero(
-                            tag: "scooter",
-                            child: Image.asset(
-                              "images/scooter1.png",
-                              height: 170,
-                              width: 100,
+                      Positioned(
+                        child: Row(
+                          children: <Widget>[
+                            SizedBox(
+                              width: value * 500,
                             ),
-                          ),
-                        ],
-                      ),
-                      top: 70,
-                      left: 0,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "Don't have an account?",
-                          style: TextStyle(
-                              color: Colors.white, fontFamily: 'Open Sans'),
+                            Hero(
+                              tag: "scooter",
+                              child: Image.asset(
+                                "images/scooter1.png",
+                                height: 170,
+                                width: 100,
+                              ),
+                            ),
+                          ],
                         ),
-                        FlatButton(
-                          onPressed: () {
-                            setState(() {
-                              Navigator.pushNamed(context, SignUpScreen.id);
-                            });
-                          },
-                          child: Text(
-                            "Sign Up",
+                        top: 70,
+                        left: 0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "Don't have an account?",
                             style: TextStyle(
-                                color: Color(0xFF24C8F0),
-                                fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.bold),
+                                color: Colors.white, fontFamily: 'Open Sans'),
                           ),
-                        )
-                      ],
-                    )
-                  ],
-                  fit: StackFit.loose,
+                          FlatButton(
+                            onPressed: () {
+                              setState(() {
+                                Navigator.pushNamed(context, SignUpScreen.id);
+                              });
+                            },
+                            child: Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                  color: Color(0xFF24C8F0),
+                                  fontFamily: 'Open Sans',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                    fit: StackFit.loose,
+                  ),
                 ),
               ),
             ),
