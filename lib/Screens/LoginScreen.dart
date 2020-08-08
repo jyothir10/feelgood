@@ -6,7 +6,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:feelsgood/Styling/Constants.dart';
 import 'package:feelsgood/Screens/SignUpScreen.dart';
-import 'package:feelsgood/Screens/HomeScreen.dart';
+import 'package:feelsgood/Screens/PermissionScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = '/login';
@@ -169,7 +169,8 @@ class _LoginScreenState extends State<LoginScreen>
                                   },
                                 );
                                 await Future.delayed(Duration(seconds: 3));
-                                Navigator.pushNamed(context, HomeScreen.id);
+                                Navigator.pushNamed(
+                                    context, PermissionScreen.id);
                               },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(

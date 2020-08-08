@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:feelsgood/Styling/Constants.dart';
+import 'package:feelsgood/Screens/HomeScreen.dart';
 import 'dart:async';
 
 Timer timer;
 
 void _showDialog(BuildContext context) {
-  timer = Timer(Duration(milliseconds: 2000), () {
+  timer = Timer(Duration(milliseconds: 1200), () {
     showDialog(
         context: context,
         builder: (context) {
@@ -54,6 +55,9 @@ void _showDialog(BuildContext context) {
                     child: Container(
                       width: 100,
                       child: FlatButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, HomeScreen.id);
+                        },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                           side: BorderSide(
