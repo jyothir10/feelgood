@@ -18,6 +18,7 @@ import 'package:feelsgood/Models/Trending.dart';
 import 'package:feelsgood/bloc/Trendingbloc.dart';
 import 'package:feelsgood/Screens/SupermarketScreen.dart';
 import 'package:feelsgood/Components/Drawer.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = '/home';
@@ -199,8 +200,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               return TopMarketCard(
                                 topMarket: snapshot.data[index],
                                 onPress: () {
-                                  Navigator.pushNamed(
-                                      context, SupermarketScreen.id);
+                                  Navigator.push(
+                                      context,
+                                      PageTransition(
+                                        type: PageTransitionType.rightToLeft,
+                                        child: SupermarketScreen(),
+                                      ));
                                 },
                               );
                             })
@@ -244,8 +249,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             return NearMarketCard(
                               nearMarket: snapshot.data[index],
                               onPress: () {
-                                Navigator.pushNamed(
-                                    context, SupermarketScreen.id);
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: SupermarketScreen(),
+                                    ));
                               },
                             );
                           })
