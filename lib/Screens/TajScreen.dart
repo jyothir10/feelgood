@@ -10,6 +10,7 @@ import 'package:feelsgood/bloc/Sellingbloc.dart';
 import 'package:feelsgood/Components/SellingCard.dart';
 import 'package:feelsgood/Screens/RestaurantCartScreen.dart';
 import 'package:feelsgood/Components/Drawer.dart';
+import 'package:page_transition/page_transition.dart';
 
 class TajScreen extends StatefulWidget {
   static const String id = '/Taj';
@@ -283,8 +284,13 @@ class _TajScreenState extends State<TajScreen> {
                                   return TajCard(
                                     taj: snapshot.data[index],
                                     onPress: () {
-                                      Navigator.pushNamed(
-                                          context, RestaurantCartScreen.id);
+                                      Navigator.push(
+                                          context,
+                                          PageTransition(
+                                            type:
+                                                PageTransitionType.rightToLeft,
+                                            child: RestaurantCartScreen(),
+                                          ));
                                     },
                                   );
                                 })

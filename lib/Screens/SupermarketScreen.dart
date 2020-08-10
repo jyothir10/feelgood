@@ -19,6 +19,7 @@ import 'package:feelsgood/bloc/Searchbloc.dart';
 import 'package:feelsgood/Components/SearchCard.dart';
 import 'package:feelsgood/Screens/FruitScreen.dart';
 import 'package:feelsgood/Components/Drawer.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SupermarketScreen extends StatefulWidget {
   static const String id = '/supermarket';
@@ -246,7 +247,12 @@ class _SupermarketScreenState extends State<SupermarketScreen> {
                               return CategoriesCard(
                                 category: snapshot.data[index],
                                 onPress: () {
-                                  Navigator.pushNamed(context, FruitScreen.id);
+                                  Navigator.push(
+                                      context,
+                                      PageTransition(
+                                        type: PageTransitionType.leftToRight,
+                                        child: FruitScreen(),
+                                      ));
                                 },
                               );
                             })

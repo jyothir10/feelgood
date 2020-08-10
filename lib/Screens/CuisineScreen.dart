@@ -8,6 +8,7 @@ import 'package:feelsgood/Models/Type.dart';
 import 'package:feelsgood/Components/PcuisineCard.dart';
 import 'package:feelsgood/Screens/TajScreen.dart';
 import 'package:feelsgood/Components/Drawer.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CuisineScreen extends StatefulWidget {
   static const String id = '/Cuisine';
@@ -131,7 +132,13 @@ class _CuisineScreenState extends State<CuisineScreen> {
                                 return CuisineCard(
                                   cuisine: snapshot.data[index],
                                   onPress: () {
-                                    Navigator.pushNamed(context, TajScreen.id);
+                                    Navigator.push(
+                                      context,
+                                      PageTransition(
+                                        type: PageTransitionType.rightToLeft,
+                                        child: TajScreen(),
+                                      ),
+                                    );
                                   },
                                 );
                               })
