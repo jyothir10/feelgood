@@ -25,6 +25,7 @@ import 'package:feelsgood/Screens/BreakfastScreen.dart';
 import 'package:feelsgood/Screens/TajScreen.dart';
 import 'package:feelsgood/Screens/CuisineScreen.dart';
 import 'package:feelsgood/Components/Drawer.dart';
+import 'package:page_transition/page_transition.dart';
 
 class RestaurantScreen extends StatefulWidget {
   static const String id = '/restaurant';
@@ -171,8 +172,12 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                           return TypeCard(
                                             type: snapshot.data[index],
                                             onPress: () {
-                                              Navigator.pushNamed(
-                                                  context, BreakfastScreen.id);
+                                              Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                type: PageTransitionType.rightToLeft,
+                                                child: BreakfastScreen(),
+                                              ));
                                             },
                                           );
                                         })
@@ -266,8 +271,12 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                       return NearResCard(
                                         nearRes: snapshot.data[index],
                                         onPress: () {
-                                          Navigator.pushNamed(
-                                              context, TajScreen.id);
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                            type: PageTransitionType.rightToLeft,
+                                            child: TajScreen(),
+                                          ));
                                         },
                                       );
                                     })
@@ -306,8 +315,11 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                               return PcuisineCard(
                                                 cuisine: snapshot.data[index],
                                                 onPress: () {
-                                                  Navigator.pushNamed(context,
-                                                      CuisineScreen.id);
+                                                  Navigator.push(context,
+                                                      PageTransition(
+                                                        type: PageTransitionType.rightToLeft,
+                                                        child: CuisineScreen(),
+                                                      ));
                                                 },
                                               );
                                             })
